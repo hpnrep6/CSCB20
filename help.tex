@@ -231,6 +231,16 @@ $R9 := \rho_{R9(sid1, sid2, pid, cost)}\pi_{sid, subid, C1.pid, cost}(R8)$
 \\~\\
 ii) Find each pid, find the suppliers that have the products listed in their catalog at the exact same price. Return columns containing the pid, sid, cost. 
 \\~\\
+$R1 := \rho_{C1}(Catalog)$
+
+$R2 := \rho_{C2}(Catalog)$
+
+$R3 := C1 \times C2$ FIX DIVISIION
+
+$R4 := \sigma_{C1.pid = C2.pid \wedge C1.sid != C2.sid \wedge C1.cost = C2.cost}(R3)$
+
+$R5 := \rho_{R5(pid, sid, cost)}(\pi_{C1.pid, C1.sid, C1.cost}(R4))$
+\\~\\
 iii) Find the pids that have been listed as at least 3 different tags. However, one of the tags must be ‘PPE’, and one of them must not be ‘Super Tech’. Return columns containing the pid, pname, cost. 
 \\~\\
 iv) For each pair of “reciprocal subsuppliers”($^{*2}$), find all of their “uncommon subsuppliers”($^{*3}$). Every uncommon subsupplier of the pair should have only one row. Return the sid of the reciprocal subsuppliers, along with the sid, name and email of the uncommon subsupplier. 
