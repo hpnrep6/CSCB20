@@ -1,4 +1,4 @@
-\documentclass[11pt]{article}
+\documentclass[10pt]{article}
 \usepackage[a4paper, total={17cm, 25cm}]{geometry}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
@@ -9,8 +9,8 @@
 \usepackage{mathtools}
 \newcommand\tab[1][1cm]{\hspace*{#1}}
 \begin{document}
-
-Q1. Convert to simple English sentences
+\section{ }
+Q1. a) Convert to simple English sentences
 \break \break
 i) \break
 $\pi_{sname}($
@@ -70,4 +70,57 @@ $)$ $\cup$ $\pi_{sid}($
 $)$
 \break \break
 Gets the supplier IDs of suppliers that offer PPE or (inclusive) SuperTech products, both having a cost less than 6.
+\break \break
+v)
+
+$\pi_{sname} ($
+
+\tab $(\pi_{sid, sname} ($
+
+\tab \tab $(\sigma_{tagname='PPE'}ProductTag)\bowtie(\sigma_{cost<6}Catalog)\bowtie Suppliers)$
+
+\tab $) \cap (\pi_{sid, sname} ($
+
+\tab \tab $(\sigma_{tagname='SuperTech'}ProductTag)\bowtie(\sigma_{cost<6}Catalog)\bowtie Suppliers)$
+
+\tab $)$
+
+$)$
+\break \break
+Get the names of the suppliers that offer PPE made up SuperTech with a cost less than 6.
+
+\break \break
+
+Q1. b) Write relational algebra
+\break \break
+i) $\pi_{snames}(\sigma_{(tagname='PPE') \vee (tagname ='Testing')}ProductTag \bowtie Suppliers)$
+\\~\\
+ii) ($\pi_{sid}((\sigma_{tagname='PPE'}ProductTag) \bowtie (\sigma_{cost<10 \wedge cost>420}Catalog) \bowtie Suppliers))$
+\\~\\
+iii)
+($\pi_{sid}((\sigma_{tagname='PPE'}ProductTag) \bowtie (\sigma_{cost\geq 10 \wedge cost \leq 1337}Catalog) \bowtie Suppliers))\;$
+\\~\\
+iv)
+\newline
+$R1 := \sigma_{tagname='Cleaning'}ProductTag$
+\newline
+$R2 := \pi_{sid, pid}(R1 \bowtie Catalog$)
+\newline
+$R3 := \pi_{pid}(R1 \bowtie Catalog)$
+\newline
+$R4 := R2\div R3$
+\\~\\
+v)
+\\~\\
+vi)
+\\~\\
+vii)
+\\~\\
+viii)
+\\~\\
+ix)
+\\~\\
+x)
+
+
 \end{document}
