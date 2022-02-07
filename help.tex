@@ -1,0 +1,73 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper, total={17cm, 25cm}]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[document]{ragged2e}
+\usepackage{setspace}
+\usepackage{mathtools}
+\newcommand\tab[1][1cm]{\hspace*{#1}}
+\begin{document}
+
+Q1. Convert to simple English sentences
+\break \break
+i) \break
+$\pi_{sname}($
+
+\tab$\pi_{sid}($
+
+\tab\tab $(\sigma_{tagname='PPE'}ProductTag)\bowtie(\sigma_{cost<6}Catalog)$
+
+\tab $) \bowtie Suppliers$
+
+$)$
+\break \break
+Get the names of the suppliers that have PPE that costs less than 6.
+\break
+[Outputs the suppliers that have products tagged with 'PPE' and a cost of less than 6]
+\break \break
+ii)
+
+$\pi_{sname}($
+
+\tab$\pi_{sid}($
+
+\tab\tab $(\sigma_{tagname='PPE'}ProductTag)\bowtie(\sigma_{cost<6}Catalog) \bowtie Suppliers$
+
+\tab $)$
+
+$)$
+\break \break
+Nothing is returned from this operation.
+\break
+[$(\sigma_{tagname='PPE'}ProductTag)\bowtie(\sigma_{cost<6}Catalog)$ returns the products with tag PPE and cost < 6, columns are: tid, pid, tagname, sid, pid, cost. Natural join with supplier looks at common sid, so that returns the suppliers with products of tag PPE and cost < 6. Projecting sid will result in each tuple only having an sid. Projecting the sname of a table where the tuples have only sid results in nothing being returned.]
+\break \break
+iii)
+
+$\pi_{sname}($
+
+\tab $(\sigma_{tagname = 'PPE'}ProductTag)\bowtie(\sigma_{cost < 6} Catalog)\bowtie Suppliers$
+
+$)$ $\cap$ $\pi_{sname}($
+
+\tab$(\sigma_{tagname = 'SuperTech'}ProductTag)\bowtie(\sigma_{cost < 6} Catalog)\bowtie Suppliers$
+
+$)$
+\break \break
+Gets the names of the suppliers that offer PPE made by SuperTech that costs less than 6.
+\break \break
+iv)
+
+$\pi_{sid}($
+
+\tab $(\sigma_{tagname = 'PPE'}ProductTag)\bowtie(\sigma_{cost < 6} Catalog)\bowtie Suppliers$
+
+$)$ $\cup$ $\pi_{sid}($
+
+\tab$(\sigma_{tagname = 'SuperTech'}ProductTag)\bowtie(\sigma_{cost < 6} Catalog)\bowtie Suppliers$
+
+$)$
+\break \break
+Gets the supplier IDs of suppliers that offer PPE or (inclusive) SuperTech products, both having a cost less than 6.
+\end{document}
