@@ -93,7 +93,7 @@ Get the names of the suppliers that offer PPE made up SuperTech with a cost less
 
 Q1. b) Write relational algebra
 \break \break
-i) $\pi_{snames}(\sigma_{(tagname='PPE') \vee (tagname ='Testing')}ProductTag \bowtie Suppliers)$
+i) $\pi_{sname}(\sigma_{(tagname='PPE') \vee (tagname ='Testing')}ProductTag \bowtie Catalog \bowtie Suppliers)$
 \\~\\
 ii) ($\pi_{sid}((\sigma_{tagname='PPE'}ProductTag) \bowtie (\sigma_{cost<10 \wedge cost>420}Catalog) \bowtie Suppliers))$
 \\~\\
@@ -107,20 +107,93 @@ $R1 := \sigma_{tagname='Cleaning'}ProductTag$
 $R2 := \pi_{sid, pid}(R1 \bowtie Catalog$)
 \newline
 $R3 := \pi_{pid}(R1 \bowtie Catalog)$
-\newline
+
 $R4 := R2\div R3$
+\newline
+
+(or without $\div$)
+
+$R4 := \pi_{R1.sid,\; Suppliers.pid}(R2 \times Suppliers)$
+
+$R5 := \rho_{R4(sid, pid)}(R4)$
+
+$R6 := \pi_{sid}(R5 - R2)$
+
+$R7 := \pi_{sid}(Suppliers) - R6$
 \\~\\
 v)
+
+$R1 := \rho_{S1}(\rho_{(sid, cost)}(\pi_{Suppliers.sid, Catalog.cost}(Catalog \bowtie Product)))$
+
+$R2 := \rho_{S2}(\rho_{(sid, cost)}(\pi_{Suppliers.sid, Catalog.cost}(Catalog \bowtie Product)))$
+
+$R3 := \sigma_{S1.cost\;\geq\; S2.cost \; \cdot \;1.2 }(\sigma_{S1.sid\;!= \;S2.sid}(R1 \times R1))$
+
+$R4 := \rho_{(sid)}(\pi_{S1.sid}(R3))$
 \\~\\
 vi)
+
+$R1 := \rho_{P1}(Catalog)$
+
+$R2 := \rho_{P2}(Catalog)$
+
+$R3 := P1 \times P2$
+
+$R4 := \sigma_{(P1.pid = P2.pid)\; \wedge\; (P1.sid != P2.sid)}(R3)$
+
+$R5 := \rho_{(pid)}(\pi_{P1.pid}(R4))$
 \\~\\
 vii)
+
+$R1 := \sigma_{tagname='Super Tech'}(ProductTag) \bowtie Suppliers$
+
+$R2 := \rho_{R2(sid, cost)}(\sigma_{scountry = 'USA'}(R1))$
+
+$R3 := \rho_{R3}(R2)$
+
+$R4 := \rho_{R4(sid, cost)}(R2 \bowtie_{R2.cost < R3.cost}(R3))$
+
+$R5 := R2 - R4$
+
+$R6 := \pi_{sid}(R5)$
 \\~\\
 viii)
+
+$R1 := \sigma_{tagname='Super Tech'}(ProductTag) \bowtie Suppliers$
+
+$R2 := \rho_{R2(sid, cost)}(\sigma_{scountry = 'USA'}(R1))$
+
+$R3 := \rho_{R3}(R2)$
+
+$R4 := \rho_{R4(sid, cost)}(R2 \bowtie_{R2.cost < R3.cost}(R3))$
+
+$R5 := R2 - R4$ [Most Expensive]
+
+$R6 := R2 - R5$ [Table excluding most expensive]
+
+$R7 := \rho_{R7(sid, cost)}(\sigma_{scountry = 'USA'}(R6))$
+
+$R8 := \rho_{R8}(R7)$
+
+$R9 := \rho_{R9(sid, cost)}(R7 \bowtie_{R7.cost < R8.cost}(R8))$
+
+$R10 := R6 - R9$
+
+$R11 := \pi_{sid}(R10)$
 \\~\\
 ix)
+
+$R1 := \rho_{R1(pid, sid, cost)}(\pi_{Product.pid, Suppliers.sid}(Product \bowtie Catalog \bowtie Suppliers))$
+
+$R2 := \pi_{pid}(R1)$
+
+$R3 := R1 \div R2$
+
+$R4 := \sigma_{cost<69}(R3)$
+
+$R5 := \pi_{sid}(R4)$
 \\~\\
-x)
+x) $\pi_{pid}(Product \bowtie \sigma_{quantity=0}(Inventory))$
 
 
 \end{document}
