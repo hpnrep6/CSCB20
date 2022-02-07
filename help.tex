@@ -95,10 +95,10 @@ Q1. b) Write relational algebra
 \break \break
 i) $\pi_{sname}(\sigma_{(tagname='PPE') \vee (tagname ='Testing')}ProductTag \bowtie Catalog \bowtie Suppliers)$
 \\~\\
-ii) ($\pi_{sid}((\sigma_{tagname='PPE'}ProductTag) \bowtie (\sigma_{cost<10 \wedge cost>420}Catalog) \bowtie Suppliers))$
+ii) $\pi_{sid}((\sigma_{tagname='PPE'}ProductTag) \bowtie (\sigma_{cost<10 \wedge cost>420}Catalog) \bowtie Suppliers))$
 \\~\\
 iii)
-($\pi_{sid}((\sigma_{tagname='PPE'}ProductTag) \bowtie (\sigma_{cost\geq 10 \wedge cost \leq 1337}Catalog) \bowtie Suppliers))\;$
+$\pi_{sid}((\sigma_{tagname='PPE'}ProductTag) \bowtie (\sigma_{cost\geq 10 \wedge cost \leq 1337}Catalog) \bowtie Suppliers))\;$
 \\~\\
 iv)
 \newline
@@ -194,6 +194,45 @@ $R4 := \sigma_{cost<69}(R3)$
 $R5 := \pi_{sid}(R4)$
 \\~\\
 x) $\pi_{pid}(Product \bowtie \sigma_{quantity=0}(Inventory))$
+\\~\\
+c)
+\\~\\
+i) For each pair of suppliers that have a “business relationship” ($^{*1}$) with each other, find pids they both offer in their catalog, but which we do not have inventory of. Return the sid for each supplier as sid1, and sid2, as well as the pid and cost. 
+\\~\\
+- Get the needed columns from subsuppliers
 
+$R1 := \pi_{sid, subid}(Subsuppliers)$
 
+- Create copies of catalog
+
+$R2 := \rho_{C1}(Catalog)$
+
+$R3 := \rho_{C2}(Catalog)$
+
+- Create a table where each business relation is in a tuple with the different combinations of products from supplier and sub
+
+$R4 := R1 \bowtie_{sid = C1.sid}(C1)$
+
+$R5 := R4 \bowtie_{subid = C2.sid}(C2)$
+
+- Get the products in common
+
+$R6 := \sigma_{C1.pid = C2.pid}(R5)$
+
+- Join with the inventory table to find the ones with 0 quantity
+
+$R7 := R6 \bowtie_{C1.pid = Inventory.pid}(Inventory)$
+
+$R8 := \sigma_{quantity = 0}(R7)$
+
+- Format into desired format
+
+$R9 := \rho_{R9(sid1, sid2, pid, cost)}\pi_{sid, subid, C1.pid, cost}(R8)$
+\\~\\
+ii) Find each pid, find the suppliers that have the products listed in their catalog at the exact same price. Return columns containing the pid, sid, cost. 
+\\~\\
+iii) Find the pids that have been listed as at least 3 different tags. However, one of the tags must be ‘PPE’, and one of them must not be ‘Super Tech’. Return columns containing the pid, pname, cost. 
+\\~\\
+iv) For each pair of “reciprocal subsuppliers”($^{*2}$), find all of their “uncommon subsuppliers”($^{*3}$). Every uncommon subsupplier of the pair should have only one row. Return the sid of the reciprocal subsuppliers, along with the sid, name and email of the uncommon subsupplier. 
+\\~\\
 \end{document}
