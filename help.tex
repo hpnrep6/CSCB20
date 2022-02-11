@@ -287,6 +287,8 @@ $R3 := R1 \times R2$
 
 $R4 := \sigma_{S1.sid = S2.subid \wedge S1.subid = S2.sid}(R3)$
 
+- Identify the common subsuppliers
+
 $R5 := \rho_{sid1, sid2}(\pi_{S1.sid, S2.sid}(R4))$
 
 $R6 := \rho_{R6}(R5)$
@@ -294,14 +296,21 @@ $R6 := \rho_{R6}(R5)$
 $R7 := \rho_{R7}(R6)$
 
 $R8 := R6 \times R7$
-% sid1 sid2 sid1 sid2
 
-- Get subsuppliers that appear in more than 2
-$R9 := \sigma_{R7.sid1 != R8.sid1 \wedge R7.sid2 = R8.sid2}(R8)$
+$R9 := \sigma_{R6.sid1 = R7.sid1 \wedge R6.sid2 != R7.sid2}(R8)$
 
-- Subsuppliers to remove
-$R10 := \rho_{R10(R7.sid2)}(R9)$
+- Common subsuppliers are identified in R10
 
-$R11 := $
+$R10 := \rho_{R10(sid1, sid2)}(\pi_{R6.sid1, R6.sid2}(R9))$
+
+- Remove common subsuppliers, only uncommon ones left
+
+$R11 := R5 - R10$
+
+- Format to answer
+
+$R12 := R11 \bowtie_{sid2 = Subsuppliers.sid}(Subsuppliers)$
+
+$R13 := \rho_{sid, subid, name, address}(\pi_{sid1, sid2, sname, saddress}(R12))$
 \\~\\
 \end{document}
