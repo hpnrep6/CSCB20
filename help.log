@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.2.4)  8 FEB 2022 17:20
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.2.4)  10 FEB 2022 13:35
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -448,18 +448,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 94--97
  []
 
 [2]
-! Missing } inserted.
-<inserted text> 
-                }
-l.272 $R8 := \rho_{pid}({\pi_{A.sid}(R7))$
-                                          
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-
 Overfull \hbox (0.91515pt too wide) in paragraph at lines 278--279
 \OT1/cmr/m/n/10 com-mon sub-sup-plier of the pair should have only one row. Re-
 turn the sid of the re-cip-ro-cal sub-sup-pli-ers, along 
@@ -483,7 +471,7 @@ ts/cm/cmr10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts
 /cmsy10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/
 cmsy5.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cm
 sy7.pfb>
-Output written on help.pdf (4 pages, 97089 bytes).
+Output written on help.pdf (4 pages, 97660 bytes).
 PDF statistics:
  49 PDF objects out of 1000 (max. 8388607)
  34 compressed objects within 1 object stream
