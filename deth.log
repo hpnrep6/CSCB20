@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Debian) (preloaded format=pdflatex 2021.7.22)  9 FEB 2022 00:47
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Debian) (preloaded format=pdflatex 2021.7.22)  13 FEB 2022 15:22
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**help.tex
-(./help.tex
+**deth.tex
+(./deth.tex
 LaTeX2e <2020-10-01> patch level 4
 L3 programming layer <2021-01-09> xparse <2020-03-03>
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
@@ -206,8 +206,8 @@ File: l3backend-pdftex.def 2020-01-29 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count271
 \l__pdf_internal_box=\box50
 )
-(./help.aux)
-\openout1 = `help.aux'.
+(./deth.aux)
+\openout1 = `deth.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 11.
 LaTeX Font Info:    ... okay on input line 11.
@@ -304,175 +304,41 @@ e
 \Gin@req@height=\dimen169
 \Gin@req@width=\dimen170
 )
-LaTeX Font Info:    Trying to load font information for U+msa on input line 16.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 17.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 16.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 17.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
-Underfull \hbox (badness 10000) in paragraph at lines 13--17
-\OT1/cmr/m/n/10 Q1. a) Con-vert to sim-ple En-glish sen-tences  
- []
+) [1
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 13--17
- 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 13--17
-\OT1/cmr/m/n/10 i)  
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 24--31
-[]$\OT1/cmr/m/n/10 )$  
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 24--31
- 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 24--31
-\OT1/cmr/m/n/10 Get the names of the sup-pli-ers that have PPE that costs less 
-than 6.  
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 24--31
-\OT1/cmr/m/n/10 [Outputs the sup-pli-ers that have prod-ucts tagged with 'PPE' 
-and a cost of less than 6]  
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 24--31
- 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 40--47
-[]$\OT1/cmr/m/n/10 )$  
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 40--47
- 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 40--47
-\OT1/cmr/m/n/10 Nothing is re-turned from this op-er-a-tion.  
- []
-
-
-Underfull \hbox (badness 3930) in paragraph at lines 40--47
-\OT1/cmr/m/n/10 ject-ing the sname of a ta-ble where the tu-ples have only sid 
-re-sults in noth-ing be-ing re-turned.]  
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 40--47
- 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 56--61
-[]$\OT1/cmr/m/n/10 )$  
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 56--61
- 
- []
-
-
-Underfull \hbox (badness 7415) in paragraph at lines 56--61
-\OT1/cmr/m/n/10 Gets the names of the sup-pli-ers that of-fer PPE made by Su-pe
-rTech that costs less than 6.  
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 56--61
- 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 70--75
-[]$\OT1/cmr/m/n/10 )$  
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 70--75
- 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 70--75
-\OT1/cmr/m/n/10 than 6.  
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 70--75
- 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 88--91
-[]$\OT1/cmr/m/n/10 )$  
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 88--91
- 
- []
-
-[1
-
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-Underfull \hbox (badness 10000) in paragraph at lines 94--97
-[]\OT1/cmr/m/n/10 Q1. b) Write re-la-tional al-ge-bra  
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 94--97
- 
- []
-
-[2]
-Overfull \hbox (0.91515pt too wide) in paragraph at lines 278--279
-\OT1/cmr/m/n/10 com-mon sub-sup-plier of the pair should have only one row. Re-
-turn the sid of the re-cip-ro-cal sub-sup-pli-ers, along 
- []
-
-[3] [4] (./help.aux) ) 
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2] (./deth.aux) ) 
 Here is how much of TeX's memory you used:
  3674 strings out of 479304
  53421 string characters out of 5869779
- 349643 words of memory out of 5000000
+ 352643 words of memory out of 5000000
  20832 multiletter control sequences out of 15000+600000
  405734 words of font info for 37 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 70i,5n,77p,452b,104s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.p
-fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/
-texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texliv
-e/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texlive/texmf
--dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
-Output written on help.pdf (4 pages, 97909 bytes).
+ 70i,6n,77p,221b,104s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/sh
+are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/te
+xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmsy5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmsy7.pfb>
+Output written on deth.pdf (2 pages, 86509 bytes).
 PDF statistics:
- 49 PDF objects out of 1000 (max. 8388607)
- 34 compressed objects within 1 object stream
+ 43 PDF objects out of 1000 (max. 8388607)
+ 30 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,0 +1,120 @@
+\documentclass[10pt]{article}
+\usepackage[a4paper, total={17cm, 25cm}]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[document]{ragged2e}
+\usepackage{setspace}
+\usepackage{mathtools}
+\newcommand\tab[1][1cm]{\hspace*{#1}}
+\begin{document}
+\section{ }
+Q1. b) RA
+\\~\\
+i)
+
+$ppe\_or\_testing := \sigma_{tagname = 'PPE' \vee tagname = 'Testing'}(ProductTag)$
+
+$names := \pi_{sname}(ppe\_or\_testing \bowtie Catalog \bowtie Suppliers)$
+\\~\\
+ii)
+
+$ppe\_filter := \sigma_{tagname = 'PPE'}(ProductTag) \bowtie \sigma_{cost < 10 \wedge cost >  420}(Catalog)$
+
+$sids := \pi_{sid}(ppe\_filter)$
+\\~\\
+iii)
+
+$to\_remove := \sigma_{tagname = 'PPE'}(ProductTag) \bowtie \sigma_{10 <= cost <= 1337}(Catalog)$
+
+$sids := \pi_{sid}(Catalog) - \pi_{sid}(to\_remove)$
+\\~\\
+iv)
+
+$cleaning := \rho_{cleaning}(\pi_{pid}(\sigma_{tagname = 'Cleaning'}(ProductTag)))$
+
+$suppliers := \sigma_{sid}(Catalog \div cleaning)$
+\\~\\
+v)
+
+$cat1 := \rho_{cat1}(Catalog)$
+
+$cat2 := \rho_{cat2}(Catalog)$
+
+$pairs := \sigma_{cat1.sid <> cat2.sid}(cat1 \times cat2)$
+
+$filter := \sigma_{cat1.cost >= cat2.cost \times 1.2}(pairs)$
+
+$format := \rho_{format(sid1, sid2)}(\pi_{cat1.sid, cat2.sid}(filter))$
+\\~\\
+vi)
+
+$cat1 := \rho_{cat1}(Catalog)$
+
+$cat2 := \rho_{cat2}(Catalog)$
+
+$unique := \sigma_{cat1.sid <> cat2.sid \wedge cat1.pid = cat2.pid}(cat1 \times cat2)$
+
+$format := \rho_{format(pid)}(\sigma_{cat1.pid}(unique))$
+\\~\\
+vii)
+
+$suptech1 := \rho_{suptech1(sid, pid, cost)}(\pi_{Catalog.sid, Catalog.pid, Catalog.cost}((\sigma_{tagname = 'Super Tech'}(ProductTag) \bowtie Catalog \bowtie \sigma_{scountry = 'USA'}(Suppliers)))$
+
+$suptech2 := \rho_{suptech2}(suptech2)$
+
+$pairs := suptech1 \bowtie_{subtech1.cost < subtech2.cost} suptech2$
+
+$less\_than\_something := \rho_{less\_than\_something(pid)}(\pi_{subtech1.pid}(pairs))$
+
+$most\_expensive := \pi_{pid}(Products) - less\_than\_something$
+
+$answer := \pi_{sid}(most\_expensive \bowtie Catalog)$
+\\~\\
+viii)
+
+$suptech1 := \rho_{suptech1(sid, pid, cost)}(\pi_{Catalog.sid, Catalog.pid, Catalog.cost}((\sigma_{tagname = 'Super Tech'}(ProductTag) \bowtie Catalog \bowtie \sigma_{scountry = 'USA'}(Suppliers)))$
+
+$suptech2 := \rho_{suptech2}(suptech2)$
+
+$pairs := suptech1 \bowtie_{subtech1.cost < subtech2.cost} suptech2$
+
+$less\_than\_something := \rho_{less\_than\_something(pid)}(\pi_{subtech1.pid}(pairs))$
+
+$most\_expensive := \pi_{pid}(Products) - less\_than\_something$
+
+$most\_expensive\_items := \rho_{most\_expensive\_items(sid, pid, cost)}(\pi_{subtech1.sid, subtech1.pid, subtech1.cost}(subtech1 $
+
+$\bowtie_{suptech1.pid = most\_expensive.pid}(most\_expensive)))$
+
+$rem\_most\_exp1 := subtech1 - most\_expensive\_items$
+
+- Most expensive item removed, find the most expensive item in tables without the previous most expensive item, so find second most expensive item
+
+$rem\_most\_exp2 := \rho_{rem\_most\_exp2}(rem\_most\_exp1)$
+
+$rem\_pairs := rem\_most\_exp1 \bowtie_{rem\_most\_exp1.cost < rem\_most\_exp2.cost} rem\_most\_exp2$
+
+$rem\_less\_than := \rho_{rem\_less\_than(pid}(\pi_{rem\_most\_exp1.pid}(rem\_pairs))$
+
+$second := \pi_{sid}(Products) - most\_expensive - rem\_less\_than$
+
+$answer := \pi_{sid}(second \bowtie Catalog)$
+\\~\\
+ix)
+
+$products := \rho_{products(pid, sid, cost)}(\pi_{Product.pid, Suppliers.sid}(Product \bowtie Catalog))$
+
+$unique := \pi_{pid}(R1)$
+
+$all := products \div unique$
+
+$filter := \sigma_{cost<69}(all)$
+
+$answer := \pi_{sid}(filter)$
+\\~\\
+x)
+
+$\pi_{pid}(\sigma_{quantity=0}(Inventory))$
+\end{document}

@@ -263,13 +263,13 @@ $R5 := \sigma_{A.pid = B.pid \wedge A.pid = C.pid \wedge B.pid = C.pid}(R4)$
 
 $R6 := \sigma_{A.tagname != B.tagname \wedge A.tagname != C.tagname \wedge B.tagname != C.tagname}(R5)$
 
-- Isolate only tuples with their first tag as PPE and second as Super Tech. This also removes duplicates unless a product has the same tag twice.
+- Isolate only tuples with their first tag as PPE and second as Super Tech
 
 $R7 := \sigma_{A.tagname = 'PPE' \wedge B.tagname = 'Super Tech'}(R6)$
 
 - Return in the desired format. Duplicates are eliminated again here with the projection operator.
 
-$R8 := \rho_{pid}({\pi_{A.sid}(R7))$
+$R8 := \rho_{pid}(\pi_{A.sid}(R7))$
 
 $R9 := R8 \bowtie Catalog \bowtie Product$
 
@@ -285,15 +285,20 @@ $R3 := R1 \times R2$
 
 - Get reciprocal subsuppliers
 
-$R4 := \sigma_{S1.sid = S2.subid \wedge S1.subid = S2.sid$
+$R4 := \sigma_{S1.sid = S2.subid \wedge S1.subid = S2.sid}(R3)$
 
-$R5 := \pi_{S1.sid, S2.sid}(R4)$
+$R5 := \rho_{sid, subsid}(\pi_{S1.sid, S2.sid}(R4))$
 
 $R5 := \rho_{R5}(R4)$
 
 $R6 := \rho_{R6}(R4)$
 
-$R7 := \
+$R7 := R5 \times R6$
 
+$R8 := \sigma_{R5.sid != R6.sid}(R7)$
+
+$R9 := \sigma_{R5.subid != R6.sid}(R7)$
+
+$R10 := (R5 - R8) - R9$
 \\~\\
 \end{document}
