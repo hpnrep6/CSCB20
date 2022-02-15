@@ -117,4 +117,54 @@ $answer := \pi_{sid}(filter)$
 x)
 
 $\pi_{pid}(\sigma_{quantity=0}(Inventory))$
+\\~\\
+Q1. c) RA
+\\~\\
+i)
+
+$Cat1 := \rho_{Cat1}(Catalog)$
+
+$Cat2 := \rho_{Cat2}(Catalog)$
+
+$JoinedSuppliers := Subsuppliers \bowtie_{Subsuppliers.sid = Cat1.sid}(Cat1) \bowtie_{Subsuppliers.subid = Cat2.sid}(Cat2)$
+
+$Both := \sigma_{Cat1.pid = Cat2.pid}(JoinedSuppliers)$
+
+$Stock := Both \bowtie_{Inventory.pid =  Cat1.pid}(Inventory)$
+
+$None := \sigma_{quantity = 0}(Stock)$
+
+$Format := \rho_{Format(pid, sid1, sid2, cost1, cost2)}(\pi_{Cat1.pid, Subsuppliers.sid, Subsuppliers.subid, Cat1.cost, Cat2.cost}(None))$
+\\~\\
+ii)
+
+$Cat1 := \rho_{Cat1}(Catalog)$
+
+$Cat2 := \rho_{Cat2}(Catalog)$
+
+$Filtered := \sigma_{Cat1.sid <> Cat2.sid \wedge Cat1.pid = Cat2.pid \wedge Cat1.cost = Cat2.cost}(Cat1 \times Cat2)$
+
+$Format := \rho_{Format(pid, sid, cost)}(\pi_{Cat1.pid, Cat1.sid, Cat1.cost}(Filtered))$
+\\~\\
+iii)
+
+$Tag1 := \rho_{Tag1}(ProductTag)$
+
+$Tag2 := \rho_{Tag2}(ProductTag)$
+
+$Tag3 := \rho_{Tag3}(ProductTag)$
+
+$Cross := Tag1 \times Tag2 \times Tag3$
+
+$SameProduct := \sigma_{Tag1.pid = Tag2.pid = Tag3.pid \wedge Tag1.tagname <> Tag2.tagname <> Tag3.tagname}(Cross)$
+
+$Filter := \sigma_{Tag1.tagname = 'PPE' \wedge Tag2.tagname ='Super Tech'}(SameProduct)$
+
+$Products := \rho_{pid}(\pi_{Tag1.pid}(Filter)$
+
+$All := (Products \bowtie_{Products.pid = Catalog.pid} Catalog \bowtie_{Products.pid = Product.pid} Product$
+
+$Format := \rho_{Format(pid, pname, cost)}(\pi_{Products.pid, pname, cost}(All))$
+\\~\\
+iv)
 \end{document}
