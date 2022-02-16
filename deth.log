@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Debian) (preloaded format=pdflatex 2021.7.22)  15 FEB 2022 01:58
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Debian) (preloaded format=pdflatex 2021.7.22)  16 FEB 2022 02:41
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -8,8 +8,8 @@ LaTeX2e <2020-10-01> patch level 4
 L3 programming layer <2021-01-09> xparse <2020-03-03>
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2020/04/10 v1.4m Standard LaTeX document class
-(/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo
-File: size10.clo 2020/04/10 v1.4m Standard LaTeX file (size option)
+(/usr/share/texlive/texmf-dist/tex/latex/base/size11.clo
+File: size11.clo 2020/04/10 v1.4m Standard LaTeX file (size option)
 )
 \c@part=\count177
 \c@section=\count178
@@ -243,12 +243,12 @@ LaTeX Font Info:    ... okay on input line 11.
 * \topmargin=-55.77881pt
 * \headheight=12.0pt
 * \headsep=25.0pt
-* \topskip=10.0pt
+* \topskip=11.0pt
 * \footskip=30.0pt
-* \marginparwidth=65.0pt
-* \marginparsep=11.0pt
+* \marginparwidth=59.0pt
+* \marginparsep=10.0pt
 * \columnsep=10.0pt
-* \skip\footins=9.0pt plus 4.0pt minus 2.0pt
+* \skip\footins=10.0pt plus 4.0pt minus 2.0pt
 * \hoffset=0.0pt
 * \voffset=0.0pt
 * \mag=1000
@@ -317,28 +317,56 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 17.
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2] (./deth.aux) ) 
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2]
+Overfull \hbox (2.55922pt too wide) in paragraph at lines 147--148
+[]$\OML/cmm/m/it/10.95 Format \OT1/cmr/m/n/10.95 := \OML/cmm/m/it/10.95 ^^Z[]\O
+T1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 ^^Y[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10
+.95 None\OT1/cmr/m/n/10.95 ))$  
+ []
+
+[3]
+Overfull \hbox (9.5748pt too wide) in paragraph at lines 208--209
+[]$\OML/cmm/m/it/10.95 Cross \OT1/cmr/m/n/10.95 := \OML/cmm/m/it/10.95 ^^Y[]\OT
+1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 ^^[[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.
+95 Needed\OT1/cmr/m/n/10.95 1 \OMS/cmsy/m/n/10.95 ^^B \OML/cmm/m/it/10.95 Neede
+d\OT1/cmr/m/n/10.95 2))$  
+ []
+
+
+Overfull \hbox (19.94826pt too wide) in paragraph at lines 210--211
+[]$\OML/cmm/m/it/10.95 Diff \OT1/cmr/m/n/10.95 := \OML/cmm/m/it/10.95 ^^Z[]\OT1
+/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 ^^Y[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.9
+5 ^^[[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 Cross\OT1/cmr/m/n/10.95 ))$  
+ []
+
+
+Overfull \hbox (3.6115pt too wide) in paragraph at lines 220--221
+[]$\OML/cmm/m/it/10.95 Format \OT1/cmr/m/n/10.95 := \OML/cmm/m/it/10.95 ^^Z[]\O
+T1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 ^^Y[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10
+.95 RemoveDuplicates 
+ []
+
+[4] (./deth.aux) ) 
 Here is how much of TeX's memory you used:
- 3674 strings out of 479304
- 53421 string characters out of 5869779
- 352643 words of memory out of 5000000
- 20832 multiletter control sequences out of 15000+600000
- 405734 words of font info for 37 fonts, out of 8000000 for 9000
+ 3689 strings out of 479304
+ 53603 string characters out of 5869779
+ 346664 words of memory out of 5000000
+ 20842 multiletter control sequences out of 15000+600000
+ 408683 words of font info for 47 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 70i,6n,77p,221b,104s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/sh
-are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/te
-xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmsy5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmsy7.pfb>
-Output written on deth.pdf (2 pages, 90016 bytes).
+ 70i,6n,77p,242b,104s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi1
+0.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><
+/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/sh
+are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texl
+ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
+Output written on deth.pdf (4 pages, 97407 bytes).
 PDF statistics:
- 43 PDF objects out of 1000 (max. 8388607)
- 30 compressed objects within 1 object stream
+ 49 PDF objects out of 1000 (max. 8388607)
+ 34 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
