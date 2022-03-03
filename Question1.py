@@ -1,9 +1,10 @@
 from flask import Flask, render_template
 app = Flask(__name__)
 
+@app.route('/', defaults = {'name': ''})
 @app.route('/<name>')
-def user(name):
-    return render_template('Question1.html', name=format(name))
+def user(name = None):
+    return format(name)
 
 def format(input: str) -> str:
     input.strip()
