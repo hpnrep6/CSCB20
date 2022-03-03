@@ -32,8 +32,3 @@ def format(input: str) -> str:
         formatted = formatted.swapcase()
     
     return formatted
-
-
-
-
-user('12AbSDA3')
