@@ -1,9 +1,9 @@
-from flask import Flask
+from flask import Flask, render_template
 app = Flask(__name__)
 
 @app.route('/<name>')
 def user(name):
-    return format(name)
+    return render_template('Question1.html', name=format(name))
 
 def format(input: str) -> str:
     input.strip()
@@ -31,4 +31,4 @@ def format(input: str) -> str:
     elif hasLower or hasUpper:
         formatted = formatted.swapcase()
     
-    return formatted
+    return 'Welcome, ' + formatted + ', to my CSCB20 website!'
