@@ -1,0 +1,13 @@
+.header {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    background-color: orange;
+    position: sticky;
+}
+
+.header-tab {
+    padding-right: 1rem;
+    padding-left: 1rem;
+}
