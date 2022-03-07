@@ -39,9 +39,35 @@ p1 p2 {
     border-radius: 25px 25px 25px 25px;
 }
 
-#instructor-container {
-    display: grid;
-    grid-template-columns: 65% 35%;
+@media (min-width: 600px) {
+    #instructor-container {
+        display: grid;
+        grid-template-columns: 65% 35%;
+    }
+
+    #ta-tile {
+        margin-top: 0px !important;
+        margin-right: 25px;
+        background-color: green;
+        border-radius: 25px 25px 25px 25px;
+    }
+    
+}
+
+@media (max-width: 600px) {
+    #instructor-container {
+        display: grid;
+        grid-template-columns: 100%;
+        /* grid-template-rows: ; */
+        grid-row-gap: 40px;
+    }
+
+    #ta-tile {
+        margin-top: 5px;
+        margin-right: 25px;
+        background-color: green;
+        border-radius: 25px 25px 25px 25px;
+    }
 }
 
 #anna-tile {
@@ -50,11 +76,6 @@ p1 p2 {
     border-radius: 0 25px 25px 0;
 }
 
-#ta-tile {
-    margin-right: 25px;
-    background-color: green;
-    border-radius: 25px 25px 25px 25px;
-}
 
 #anna-content {
     display: grid;
@@ -65,6 +86,7 @@ p1 p2 {
     width: 100%;
     height: 100%;
     border-radius: 25px 25px 25px 25px;
+    opacity: 100;
 }
 
 #ta-list {
