@@ -1,13 +1,41 @@
+body {
+    background: white;
+    margin: 0px;
+    }
+    
 .header {
     display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: center;
+    flex-direction: horizontal;
     background-color: orange;
     position: sticky;
+    top: 0;
+    left: 0;
+    width: fit-content;
+    padding-bottom: 10px;
+    padding-right: 5px;
+    border-end-end-radius: 25px;
+    z-index: 500;
+}
+    
+.header-element {
+    padding: 10px 20px;
+    text-decoration: none;
+    font-size: 20px;
+}
+    
+/* .content {
+    display: grid;
+} */
+    
+.pad-element {
+    height: 50px;
+}
+    
+.tile {
+    opacity: 50%;
 }
 
-.header-tab {
-    padding-right: 1rem;
-    padding-left: 1rem;
+.tile-content {
+    padding: 20px;
 }
+    
