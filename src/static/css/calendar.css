@@ -1,0 +1,12 @@
+.calendar{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+.title{
+    text-align: center;
+    color: blueviolet;
+}
+.tile-2{
+    opacity: 100%;
+}
