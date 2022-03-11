@@ -1,57 +1,57 @@
-html {
+body {
     overflow-x: hidden;
-}
-
-.content {
-    width: calc(100% - 100px);
-    margin: 0 50px;
-}
-
-.span-tile {
-    margin: 30px 0;
-    padding: 20px 20px;
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    background: linear-gradient(rgb(180, 180, 180) 0%, white 30%, white 70%, rgb(180, 180, 180) 100%);
-}
-
-#course-desc {
-    display: grid !important;
-    grid-template-columns: calc(50% - 15px) calc(50% - 15px);
-    grid-column-gap: 30px;
-    padding: 0 !important;
-    background: none !important;
-}
-
-@media (max-width: 600px) {
-    #course-desc {
-        grid-template-columns: 100%;
-        grid-row-gap: 30px;
-    }
-}
-
-.span-subtile {
-    padding: 20px 20px;
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    height: calc(100% - 40px);
-    background: linear-gradient(45deg, rgb(180, 180, 180) 0%, white 30%, white 70%, rgb(180, 180, 180) 100%);
-}
-
-#teach-cont {
     width: 100%;
-    overflow-x: auto;
-    display: inline-flex;
 }
 
-.teach-subtile {
-    padding: 20px 20px;
-    margin: 0 20px;
-    align-items: center;
-    justify-content: center;
-    height: calc(100% - 40px);
-    width: fit-content;
-    background: linear-gradient(45deg, rgb(180, 180, 180) 0%, white 30%, white 70%, rgb(180, 180, 180) 100%);
+.welcome h1 {
+    font-size: 5rem;
+    padding-top: 3rem;
+    padding-left: 3rem;
+    color: white;
+    margin: 0;
+}
+
+.welcome h2 {
+    font-size: 2rem;
+    color: white;
+    padding-left: 4rem;
+}
+
+.welcome {
+    background: linear-gradient(40deg, rgb(0, 0, 160) 0%, rgb(0, 150, 220) 100%);
+    height: 120vh;
+}
+
+h3 {
+    color: white;
+    font-size: 2rem;
+}
+
+.rel {
+    position: relative;
+}
+
+.slant {
+    background-color: orange;
+    height: fit-content;
+    transform: skewY(-2deg) translateY(7vh);
+    bottom: 0;
+    position: absolute;
+    z-index: 20;
+    padding-right: 5em;
+    padding-left: 5em;
+}
+
+.prereq {
+    background-color: black;
+    height: fit-content;
+    transform: skewY(2deg);
+    padding-top: 9rem;
+    padding-bottom: 3rem;
+    padding-right: 5em;
+    padding-left: 5em;
+}
+
+.prereq h3 {
+    color: white;
 }
