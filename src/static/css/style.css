@@ -2,6 +2,7 @@ body {
     background: white;
     margin: 0px;
     overflow-x: hidden;
+    scrollbar-width: none;
 }
 
 ::-webkit-scrollbar {
@@ -27,7 +28,11 @@ body {
     border-style: none none solid none;
     border-width: 3px;
     border-color: black;
-    overflow-x: scroll
+    overflow-x: auto;
+}
+
+.header::-webkit-scrollbar {
+    display: hidden;
 }
     
 .header-element {
