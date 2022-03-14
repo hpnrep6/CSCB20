@@ -1,67 +1,65 @@
-.container {
+.week {
+    height: fit-content;
+    width: 100%;
     display: grid;
-    width: 100%;
-    height: 100%;
+    grid-template-columns: 30% 70%;
+    border-bottom-color: white;
+    border-bottom-style: solid;
+    border-bottom-width: 4px;
+}
+
+.name {
+    background: linear-gradient(73deg, rgb(255, 207, 179) 0%, rgb(255, 191, 102) 100%);
+    border-right-color: white;
+    border-right-width: 4px;
+    border-right-style: solid;
+    display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    grid-template-columns: 5% 40% 5% 25% 25%;
+    justify-content: center;
 }
-.container svg {
-    height:100%;
-    width: 100%;
+
+.content {
+    background: linear-gradient(rgb(255, 245, 179) 0%, rgb(255, 221, 179) 100%);
+    padding: 1rem;
 }
-.container div {
-    
-    background: linear-gradient(90deg, #e4a240 0%,#fff 100%);
-    font-style: italic;
-    width: 100%;
-    margin: 0px;
+
+p {
     text-align: center;
-    line-height: 10px;
-    font-size: 30px;
 }
-.container h1 {
 
-    font-size:50px;
-    align-content: center;
+h2 {
+    font-size: 1.7rem;
+    
+}
+a {
+    text-decoration: none;
+    font-size: 1.2rem;
+    color: rgb(51, 102, 255);
+}
+
+h3 {
+    text-align: center;
+}
+
+.title {
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
-    display:flex;
-    font-style: italic;
-    width: 100%;
-    margin:0;
-    height:100%;
-
-    background: linear-gradient(13deg,#fff 0%, #e99d2c 100%);
-    color: #000;
-
-}
-.container h2{
-  
-    font-size:20px;
-    align-content: center;
-    justify-content: center;
-    display:flex;
-    font-style: italic;
-    width: 100%;
-    margin:0;
-    height:100%;
-    background: linear-gradient(90deg,#fff 0%, #e99d2c 100%);
-    color: #000;
-
-
-}
-.lectureslides {
-    color: #000;
-    font-size: 25px;
-    font-style: italic;
-}
-.tutorial{
-    font-size: 25px;
-    color:#000;
-    background: linear-gradient(90deg, #ffffff 0%, #e99d2c 100%);
-    font-style: italic;
-    justify-content: center;
-    display:flex;
+    background: linear-gradient(45deg, rgb(255, 173, 51) 0%, rgb(255, 109, 51) 100%);
+    border-color: white;
+    border-style: solid;
+    border-width: 4px;
 }
 
+.title h1 {
+    font-size: 10vw;
+    margin-bottom: 1rem;
+    color: white;
+}
 
+.title h2 {
+    font-size: 4vw;
+    margin-bottom: 3rem;
+    color: white;
+}
