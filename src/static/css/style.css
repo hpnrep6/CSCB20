@@ -98,3 +98,10 @@ body {
     height: 5rem;
     transform: translateY(2.5rem);
 }
+
+.center-tool {
+    display: flex;
+    justify-items: center;
+    justify-content: center;
+    width: 100%;
+}
