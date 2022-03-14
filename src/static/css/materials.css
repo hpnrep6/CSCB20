@@ -1,0 +1,67 @@
+.container {
+    display: grid;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+    grid-template-columns: 5% 40% 5% 25% 25%;
+}
+.container svg {
+    height:100%;
+    width: 100%;
+}
+.container div {
+    
+    background: linear-gradient(90deg, #e4a240 0%,#fff 100%);
+    font-style: italic;
+    width: 100%;
+    margin: 0px;
+    text-align: center;
+    line-height: 10px;
+    font-size: 30px;
+}
+.container h1 {
+
+    font-size:50px;
+    align-content: center;
+    justify-content: center;
+    display:flex;
+    font-style: italic;
+    width: 100%;
+    margin:0;
+    height:100%;
+
+    background: linear-gradient(13deg,#fff 0%, #e99d2c 100%);
+    color: #000;
+
+}
+.container h2{
+  
+    font-size:20px;
+    align-content: center;
+    justify-content: center;
+    display:flex;
+    font-style: italic;
+    width: 100%;
+    margin:0;
+    height:100%;
+    background: linear-gradient(90deg,#fff 0%, #e99d2c 100%);
+    color: #000;
+
+
+}
+.lectureslides {
+    color: #000;
+    font-size: 25px;
+    font-style: italic;
+}
+.tutorial{
+    font-size: 25px;
+    color:#000;
+    background: linear-gradient(90deg, #ffffff 0%, #e99d2c 100%);
+    font-style: italic;
+    justify-content: center;
+    display:flex;
+}
+
+
