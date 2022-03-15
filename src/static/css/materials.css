@@ -8,6 +8,26 @@
     border-bottom-width: 4px;
 }
 
+@media (max-width: 700px) {
+    .week {
+        grid-template-columns: 100%;
+    }
+    .name {
+        border-color: white;
+        border-style: solid;
+        border-width: 4px;
+    }
+    .content {
+        border-color: white;
+        border-style: solid;
+        border-width: 4px;
+    }
+
+    .title {
+        border-width: 0px !important;
+    }
+}
+
 .name {
     background: linear-gradient(73deg, rgb(255, 207, 179) 0%, rgb(255, 191, 102) 100%);
     border-right-color: white;
@@ -25,20 +45,28 @@
 
 p {
     text-align: center;
+    font-family: "Roboto";
 }
 
 h2 {
     font-size: 1.7rem;
-    
+    font-family: "Roboto";
 }
+
 a {
     text-decoration: none;
     font-size: 1.2rem;
     color: rgb(51, 102, 255);
+    font-family: "Roboto";
 }
 
 h3 {
     text-align: center;
+    font-family: "Roboto";
+}
+
+.name h1 {
+    font-family: "Roboto";
 }
 
 .title {
@@ -47,19 +75,22 @@ h3 {
     flex-direction: column;
     justify-content: center;
     background: linear-gradient(45deg, rgb(255, 173, 51) 0%, rgb(255, 109, 51) 100%);
-    border-color: white;
-    border-style: solid;
-    border-width: 4px;
+    border-bottom-color: white;
+    border-bottom-style: solid;
+    border-bottom-width: 4px;
+    width: 100%;
 }
 
 .title h1 {
     font-size: 10vw;
     margin-bottom: 1rem;
     color: white;
+    font-family: "Raleway";
 }
 
 .title h2 {
     font-size: 4vw;
     margin-bottom: 3rem;
     color: white;
+    font-family: "Raleway";
 }

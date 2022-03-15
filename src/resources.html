@@ -7,11 +7,17 @@
   <body>
     <div class="header">
         <a class="header-element" href="index.html">Home</a>
-        <a class="header-element" href="weekly-materials.html">Weekly Materials</a>
-        <a class="header-element" href="assignments.html">Assignments & Tests</a>
+        <a class="header-element" href="weekly-materials.html">Lectures & Labs</a>
+        <a class="header-element" href="assignments.html">Assignments</a>
+        <a class="header-element" href="assignments.html#tests">Tests</a>
         <a class="header-element" href="resources.html">Resources</a>
         <a class="header-element" href="calendar.html">Calendar</a>
-    </div>
+        <a class="header-element" href="index.html#syllabus">Syllabus</a>
+        <a class="header-element" href="resources.html#piazza">Piazza</a>
+        <a class="header-element" href="resources.html#markus">MarkUs</a>
+        <a class="header-element" href="index.html#instructors">Course Team</a>
+        <a class="header-element" href="resources.html#feedback">Feedback</a>
+      </div>
 
     <div id="title">
         <div class="center-tool">
@@ -31,16 +37,16 @@
             <div class="center-text">
                 <div class="center-tool">
                     <h4>
-                        Beginner Flask Tutorial
+                        Beginner MySQL Tutorial
                     </h4>
                 </div>
                 <div class="center-tool">
                     <br>
                 </div>
                 <div class="center-tool">
-                    <h5>
-                        AMOGUS TACO
-                    </h5>
+                    <a href="https://code.tutsplus.com/articles/sql-for-beginners--net-8200">
+                        Brief yourself on MySQL by clicking here
+                    </a>
                 </div>
 
             </div>
@@ -58,7 +64,7 @@
             <div class="center-text">
                 <div class="center-tool">
                     <h4>
-                        Contact Information
+                        Email Communication
                     </h4>
                 </div>
                 <div class="center-tool">
@@ -66,7 +72,9 @@
                 </div>
                 <div class="center-tool">
                     <h5>
-                        AMOGUS TACO
+                        Questions regarding the course material, assignments, midterm, etc. should be posted on the bulletin board.
+                        <br><br>
+                        Questions about the assignment which you feel you cannot formulate without revealing your solution (should be very rare!), as well as questions and concerns regarding your personal matters should be directed to the instructor.
                     </h5>
                 </div>
 
@@ -79,7 +87,7 @@
         </div>
     </div>
 
-    <div class="res">
+    <div class="res" id="piazza">
         <div class="res-info">
             <div class="center-text">
                 <div class="center-tool">
@@ -91,9 +99,39 @@
                     <br>
                 </div>
                 <div class="center-tool">
-                    <h5>
-                        AMOGUS TACO
-                    </h5>
+                    <div class="center-tool">
+                        <a href="https://piazza.com/utoronto.ca/winter2017/cscb20">
+                            Click here to join the Piazza forum for our course.
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="res-curve">
+            <svg class="curve" viewBox="0 0 100 100" preserveAspectRatio="none" fill="#6b03fc">
+                <path d="M 0,0 a 50,100 0 0,0 100,0"></path>
+            </svg>
+        </div>
+    </div>
+
+    <div class="res" id="markus">
+        <div class="res-info">
+            <div class="center-text">
+                <div class="center-tool">
+                    <h4>
+                        MarkUs
+                    </h4>
+                </div>
+                <div class="center-tool">
+                    <br>
+                </div>
+                <div class="center-tool">
+                    <div class="center-tool">
+                        <a href="https://markus.utsc.utoronto.ca/cscb20w22/">
+                            Click here to login to MarkUs for this class.
+                        </a>
+                    </div>
                 </div>
 
             </div>
@@ -118,7 +156,16 @@
                 </div>
                 <div class="center-tool">
                     <h5>
-                        AMOGUS TACO
+                        Mac OS comes with the application "terminal". 
+                        <br>Simple click on it to run. Login to mathlab by typing
+                        <br><br>
+                        ssh utorid@mathlab.utsc.utoronto.ca.
+                        <br>Enter your password.
+                        <br><br>
+                        Windows - you will need a SSH client. 
+                        <br>PuTTY is a good free one. You can download and install here: PuTTY.
+                        <br>Use the same command as above to login to mathlab:
+                        <br><br>ssh utorid@mathlab.utsc.utoronto.ca.
                     </h5>
                 </div>
 
@@ -132,7 +179,7 @@
     </div>
 
 
-    <div class="res">
+    <div class="res" id="feedback">
         <div class="res-info">
             <div class="center-text">
                 <div class="center-tool">
@@ -144,34 +191,67 @@
                     <br>
                 </div>
                 <div class="center-tool">
-                    <h5>
-                        AMOGUS TACO
-                    </h5>
-                </div>
+                    <div>
+                        <div class="center-tool">
+                            <h6>
+                                Feedback title
+                            </h6>
+                        </div>
+                        <br>
+                        <div class="center-tool">
+                            <textarea rows="1" cols="80"></textarea>
+                        </div>
+                        <br>
+                        <div class="center-tool">
+                            <h6>
+                                Feedback content
+                            </h6>
+                        </div>
+                        <br>
+                        <div class="center-tool">
+                            <textarea rows="20" cols="80"></textarea>
+                        </div>
+                        <div class="center-tool">
+                            <h6>
+                                Your contact information (optional)
+                            </h6>
+                        </div>
+                        <div class="center-tool">
+                            <textarea rows="1" cols="80"></textarea>
+                        </div>
+                        <div class="center-tool">
+                            <button>
+                                Submit
+                            </button>
+                        </div>
+                        <div id="spacer">
 
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
     <div class="footer">
-      <div class="footer-col">
-        <p>
-          Website made by $NAMES$
-          <br>
-          some other info
-        </p>
+        <div class="centre-tool">
+          <div class="footer-col">
+            <p>
+              Developed by Tina Zamiri, Young Chen, and Anabelle Hsiao.
+              <br> <br>
+            </p>
+          </div>
+          <div class="footer-col" id="uni-col">
+            <p id="uni-p">
+              This course brought to you by the University of Toronto Faculty of Computer Science.
+              <br>
+              <a href="https://www.utsc.utoronto.ca/cms/faculty-of-computer-science">
+                <br>Click here to visit our faculty's website.
+              </a>
+            </p>
+          </div>
+        </div>
       </div>
-      <div class="footer-col" id="uni-col">
-        <p id="uni-p">
-          <a href="https://www.utsc.utoronto.ca/cms/faculty-of-computer-science">
-            Course brought to you by the university of owo faculty of chemistry studies
-            <br>
-            uwu
-          </a>
-        </p>
-      </div>
-    </div>
-    
     
   </body>
 </html>
