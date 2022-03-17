@@ -25,7 +25,7 @@ body {
 }
 
 #title-name {
-    height: calc(80vh - 50px);
+    height: 30rem;
     width: 100%;
     background: linear-gradient(90deg, rgb(255, 191, 230) 0%, rgb(255, 225, 191) 100%);
     display: flex;
@@ -33,6 +33,10 @@ body {
     justify-content: center;
     align-content: center;
     word-wrap: break-word;
+}
+
+.tests #title-name {
+    height: 45rem;
 }
 
 .rel {
@@ -46,15 +50,26 @@ body {
 
 #title-name h1 {
     font-size: 6rem;
-    color: blue;
+    color: black;
     margin-left: 3rem;
     margin-top: 0;
     margin-bottom: 1rem;
+    font-family: 'Raleway';
 }
 
 #assignment-info {
+    font-family: 'Roboto';
     padding: 2rem;
-    color: black;
+    color: white;
+    font-size: 2rem;
+}
+
+#assignment-info a {
+    color: #91ceff;
+}
+
+#assignment-info a:hover {
+    color: #4fb0ff;
 }
 
 .project {
@@ -69,6 +84,20 @@ body {
     height: fit-content;
     background: linear-gradient(rgb(235, 143, 52) 0%, rgb(237, 17, 17) 100%);
     display: grid;
+}
+
+.tests {
+    border-top-color: white;
+    border-top-width: 4px;
+    border-top-style: solid;
+}
+
+.tests p {
+    font-size: 1.5rem !important;
+}
+
+.tests img {
+    width: 100%;
 }
 
 .left {
@@ -114,8 +143,27 @@ body {
 
 .circle h1 {
     color: white;
+    font-size: 2.2rem;
+    font-family: 'Raleway';
 }
 
 .circle h2 {
     color: white;
+    font-family: 'Roboto';
+}
+
+.project p {
+    font-size: 1.2rem;
+    color: white;
+    padding: 1rem;
+    font-family: 'Roboto';
+    text-align: center;
+}
+
+.project a {
+    color: #bfe5ff;
+}
+
+.project a:hover {
+    color: #80c9fa;
 }

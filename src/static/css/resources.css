@@ -12,10 +12,14 @@
     color: white;
     font-size: calc(20vw - 10px);
     margin-bottom: 2.2rem;
+    font-family: 'Raleway';
 }
 
 #title h2 {
     font-size: calc(2rem);
+    text-align: center;
+    color: white;
+    font-family: sans-serif;
 }
 
 .res {
@@ -49,15 +53,63 @@
     justify-content: center;
     justify-items: center;
     flex-direction: column;
+    padding: 1rem;
 }
 
 .res h4 {
     font-size: 3rem;
     margin-bottom: 1rem;
     color: white;
+    text-align: center;
+    font-family: 'Roboto';
 }
 
 .res h5 {
     font-size: 1.4rem;
     color: white;
+    text-align: center;
+    font-family: 'Roboto';
+}
+
+.res a {
+    font-size: 1.4rem;
+    color: #f7ebff;
+    text-align: center;
+    font-family: sans-serif;
+}
+
+.res a:hover {
+    font-size: 1.4rem;
+    color: #ead0fb;
+    text-align: center;
+    font-family: sans-serif;
+}
+
+.res textarea {
+    font-family: sans-serif;
+    font-size: 1rem;
+    width: calc(min(100%, 90vw));
+    resize: none;
+}
+
+.res h6 {
+    font-size: 2rem;
+    margin: 1rem 0;
+    color: white;
+    font-family: 'Roboto';
+    text-align: center;
+}
+
+#spacer {
+    height: 6rem;
+}
+
+button {
+    margin: 1rem;
+    font-size: 1.3rem;
+    padding: 1rem 3rem;
+    font-family: 'Raleway';
+    background: linear-gradient(rgb(162, 156, 255) 0%, rgb(23, 62, 255) 100%);
+    color: white;
+    border-color: white;
 }

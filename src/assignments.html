@@ -1,17 +1,32 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="./static/css/style.css">
     <link rel="stylesheet" href="./static/css/assignments.css">
+    <title>Assignments & Tests</title>
   </head>
   <body>
-    <div class="header">
-      <a class="header-element" href="index.html">Home</a>
-      <a class="header-element" href="weekly-materials.html">Weekly Materials</a>
-      <a class="header-element" href="assignments.html">Assignments & Tests</a>
-      <a class="header-element" href="resources.html">Resources</a>
-      <a class="header-element" href="calendar.html">Calendar</a>
-    </div>
+    <div class="header-container">
+        <div class="trigger">
+          <div class="trigger-element">
+              <img src="./static/images/Hamburger_icon_white.svg">
+          </div>
+        </div>
+        <div class="header">
+          <a class="header-element" href="index.html">Home</a>
+          <a class="header-element" href="weekly-materials.html">Lectures & Labs</a>
+          <a class="header-element" href="assignments.html">Assignments</a>
+          <a class="header-element" href="assignments.html#tests">Tests</a>
+          <a class="header-element" href="resources.html">Resources</a>
+          <a class="header-element" href="calendar.html">Calendar</a>
+          <a class="header-element" href="index.html#syllabus">Syllabus</a>
+          <a class="header-element" href="resources.html#piazza">Piazza</a>
+          <a class="header-element" href="resources.html#markus">MarkUs</a>
+          <a class="header-element" href="index.html#instructors">Course Team</a>
+          <a class="header-element" href="resources.html#feedback">Feedback</a>
+        </div>
+      </div>
 
     <div id="title">
         <div id="title-grid">
@@ -28,9 +43,14 @@
                 </polygon>
             </svg>
 
-            <div id="assignment-info">
-                Here are the assignment and exercise topics, weights, and due dates. I will be posting the exercise and assignment handouts here. All exercises and assignments will be submitted on
-            </div>
+            <p id="assignment-info">
+                Here are the assignment and exercise topics, weights, and due dates.
+                <br><br>
+                I will be posting the exercise and assignment handouts here.
+                <br><br>
+                All exercises and assignments will be submitted on 
+                <a href="https://markus.utsc.utoronto.ca/cscb20w17/en">Markus</a>.
+            </p>
         </div>
     </div>
 
@@ -42,14 +62,38 @@
                         Assignment 1
                     </h1>
                     <h2>
-                        We are uwu
+                        Relational Algebra and MySQL
                     </h2>
                 </div>
             </div>
             <div class="center-tool">
-                <div>
-                    asda
-                </div>
+                <p>
+                    Part 1: Database Schema
+                    <br><br>
+                    This assignment step is intended to strengthen your understanding of Relational Schema for databases. In particular, understanding how to draw schema diagrams, recognize primary keys and foreign key constraints.
+                    <br><br>
+                    For this assignment step you will use the given relation schemas and draw a schema diagram. Your diagram should underline primary keys and link foreign key constraints as done in class with the university schema.
+                    <br><br>
+                    Part 1: Relational Algebra
+                    <br><br>
+                    This assignment step is intended to strengthen your understanding of Relational Algebra and MySQL for databases.
+                    <br><br>
+                    Part 2: MySQL - Writing Queries
+                    <br><br>
+                    This assignment step is intended to strengthen your understanding of writing queries in MySQL.
+                    <br><br>
+                    Write MySQL queries for the movies database for each of the following. Write your queries in a file, queries.sql. Your filename must match exactly. You should have one query per line so that on the ith line you have the query for the ith question below. If a query is not possible, then your query should return NULL.
+                    <br><br>
+                    Part 3: MySQL - Maintaining the Database
+                    <br><br>
+                    This assignment step is intended to strengthen your understanding of writing create, update and insert commands.
+                    <br><br>    
+                    We are going to write the code as if we are adding a new table to the database. You can test your code on the imbd_small by importing a copy to your own account. Write the following code in a new file called maintain.sql. Your filename must match exactly. You should have one command per line.
+                    <br><br>
+                    <a href="./static/pdf/w1.pdf">
+                        Click here for the assignment handhout.
+                    </a>
+                </p>
             </div>
         </div>
         <div class="project-trig">
@@ -66,17 +110,67 @@
     <div class="project">
         <div class="project-tile right">
             <div class="center-tool">
-                <div>
-                    asda
-                </div>
+                <p>
+                    Question 1
+                    <br><br>
+                    For  this  question,  you  will  need  to  get  Python  installed  on  your  and  your  friend  computer  (assuming  that  you  are 
+                    working in groups of 2). Create a file called Question1.py that has a method called user that takes in as input a string and 
+                    checks whether the string is in upper case or lower case. If it is in upper case,  you must convert the string into lower 
+                    case and if it is in lower case, you must convert the string into upper case. Your method user must generate back a HTML 
+                    string that greets the person with the given name.
+                    <br><br> 
+                    Question 2
+                    <br><br>
+                    In  this  assignment,  you  will  develop  a  new  course  website  for  the course CSC  B20  using  HTML and  CSS.  You are  not 
+                    allowed to use any web framework such as BootStrap and JQuery etc. You must work in groups of two or three. The 
+                    webpage must be usable, responsive, and visually appealing. Below is an example course page, however it is up to you 
+                    to create a design following the mandates listed in this assignment. I want you to have some fun with this assignment. 
+                    There are some minimum requirements, but for the most part, there is a lot of creativity!
+                    <br><br>
+                    Think  about  what  an  ideal  course  website  should  look  like?  How  should  the  user  experience  be  like?  What  are  the 
+                    relevant  contents  that  must  be  shown  to the  visitor  of  the website?  What  should  the  look and  feel  of  the   website  be? 
+                    Does my website work on mobile phones? How should the CSS/HTML change to accommodate different mobile devices? 
+                    <br><br>
+                    Your assignment should be submitted as a zip (assignment2.zip) file on Markus. When we unzip your zip file, it should 
+                    contain a single directory called ‘Assignment2’ which in turn contains the following: 
+                    <br><br>•  A directory called MockUpAndUserStories: This directory will contain two sets of items i.e. 4 
+                    <br><br>–  1) MockUp and 2) UserStories. Your Mockup png should be named as ‘mockup1.png’, ‘mockup2.png’, etc. 
+                    Your  user  stories  should  be  named  as  ‘userstory1.txt’,  ‘userstory2.txt’  etc.  The  ‘userstoryX.txt’  must 
+                    correspond with the file ‘mockupX.png’ where X is any number. 
+                    <br><br>•  A directory called src: In this directory, you will place all your HTML and CSS files. One of your .html files must be 
+                    called index.html that we will open in Google Chrome browser to mark your assignment. Your ‘index.html’ will be 
+                    the starting point of your entire CSCB20 webpage. Each HTML file that you create must have a corresponding CSS 
+                    file. All your HTML and CSS must reside in this directory. If your page makes use of any images or other resources, 
+                    make appropriate subdirectories inside ‘src’ and have your HTML and CSS reference them. 
+                    <br><br>•  A file called HonorCode.txt: You must enter the following blurb in your honor code signed (by entering your and 
+                    your partner first name, last name and student #).  
+                    <br><br>– If this file is absent, we will not mark your assignment, and you will receive zero on the entire 
+                    assignment. 
+                    Honor  Code:  We  (your and your parters’ name)  pledge  that this  program  represents  my  own  program 
+                    code  and  that  we  have  coded  on  my  own.  We  received  help  from  no  one  in  designing  and  debugging  my 
+                    program. We have also read the plagiarism section in the course info sheet of CSC B20 and understand the 
+                    consequences. 
+                    <br><br>•  A file called Report.pdf. In this report (1-2 pages) you must try and answer these questions: 
+                    <br><br>–  What issues and problem did you notice with some of the previous websites? 
+                    <br><br>–  How did you address these issues in your redesigned course website? 
+                    <br><br>–  What are some challenges that you and your team member faced? How did you go about addressing these 
+                    challenges? 
+                    <br><br>•  A  file  called  Question1.py  that  contains  your  Python  code  for  question  1.  Please  make  sure  that  this  code  runs, 
+                    otherwise, we will straight away give you zero if the code does not run on our computer. You can safely assume, 
+                    that we will run your code on a machine that has Python 3.10.x installed.
+                    <br><br>
+                    <a href="./static/pdf/w1.pdf">
+                        Click here for the assignment handhout.
+                    </a>
+                </p>
             </div>
             <div class="center-tool">
                 <div class="circle">
                     <h1>
-                        Assignment 1
+                        Assignment 2
                     </h1>
                     <h2>
-                        We are uwu
+                        HTML and CSS
                     </h2>
                 </div>
             </div>
@@ -97,17 +191,35 @@
             <div class="center-tool">
                 <div class="circle">
                     <h1>
-                        Assignment 1
+                        Assignment 3
                     </h1>
                     <h2>
-                        We are uwu
+                        Exam Timetable Website
                     </h2>
                 </div>
             </div>
             <div class="center-tool">
-                <div>
-                    asda
-                </div>
+                <p>
+                    Your task for this assignment is to write the HTML, CSS, JavaScript and PHP code for a Web app that accesses a final exam timetable database site. Your app will show the exam time for a user-chosen course and alternatively (for a higher mark), an extension to this web app.
+                    <br><br>
+                    File starter.php, an incomplete starter version of your app's initial page courses.php, is provided to help get you started.
+                    <br><br>
+                    Both the front page courses.php and the search page search.php have a form into which the user can type a partial (or complete) course number (for example CSC or matha. When the "search" button is clicked, an HTML select input will be populated with all matching course names, sections and instructors in the DB (rightmost image). When the user selects one of these options, search.php is invoked to find the exam date, start and end times and location. The result returned by search.php is displayed in the browser window (bottom screenshot above).
+                    <br><br>
+                    As the last assignment for the course, one of its themes is to tie together much of the material you have learned. You will write some HTML and CSS, and a larger amount of JavaScript, PHP, and SQL code.
+                    <br><br>
+                    The required styling of these pages are very basic as shown in the images above. You are welcome to add more style to personalize and make the page look better. It is recommended you get all the functionality working first and then stylize.
+                    <br><br>
+                    Developing Your Program:
+                    <br><br>
+                    Use the MySQL console to develop your queries before writing PHP SQL code.
+                    <br><br>
+                    When you're ready to move your queries to PHP, test the results returned by the PHP functions to troubleshoot errors (the functions all return false if they fail). If your query is not working properly or giving you the wrong results, be sure to check the exact text of the query that's being sent to the MySQL server from your PHP code -- it may be different than you think! Often little SQL syntax errors are introduced when you put your query into PHP, so it helps to see precisely the text that's being sent to the database server. Hint: Save the text of your SQL query in a variable, then print that variable inside pre tags.
+                    <br><br>
+                    <a href="./static/pdf/w1.pdf">
+                        Click here for the assignment handhout.
+                    </a>
+                </p>
             </div>
         </div>
         <div class="project-trig">
@@ -118,24 +230,61 @@
             </svg>
         </div>
     </div>
-    <div class="footer">
-      <div class="footer-col">
-        <p>
-          Website made by $NAMES$
-          <br>
-          some other info
-        </p>
-      </div>
-      <div class="footer-col" id="uni-col">
-        <p id="uni-p">
-          <a href="https://www.utsc.utoronto.ca/cms/faculty-of-computer-science">
-            Course brought to you by the university of owo faculty of chemistry studies
-            <br>
-            uwu
-          </a>
-        </p>
-      </div>
+
+    <div id="tests">
+        <div id="title" class="tests">
+            <div id="title-grid">
+
+                <div id="title-name">
+                    <h1>
+                        Midterm
+                    </h1>
+                    
+                </div>
+                <svg class="trig" id="title-round" viewBox="0 0 100 100" preserveAspectRatio="none" fill="#ffe1bf">
+                    <polygon points="0,0 0,100, 100,50">
+                        
+                    </polygon>
+                </svg>
+
+                <p id="assignment-info">
+                    There will be one midterm. The midterm will be 75min in length. You should go to either HW215 or HW216 depending on your last name as shown here.
+                    <br> <br>
+                    <img src="./static/images/B20_rooms.jpg">
+                    <br><br>
+                    Preparing for the midterm:
+                    <br><br>
+                    - Understand all parts of A1.
+                    <br>
+                    - The midterm will cover everything on databases that we did from the start until part way through the week 6 lecture.
+                    <br><br>
+                    Once you have done some preparation, you can practice on a previous midterm:
+                    <a href="./static/pdf/w1.pdf">Term Test</a>.
+                </p>
+            </div>
+        </div>
     </div>
+
+
+    <div class="footer">
+        <div class="centre-tool">
+          <div class="footer-col">
+            <p>
+              Developed by Tina Zamiri, Young Chen, and Anabelle Hsiao.
+              <br> <br>
+            </p>
+          </div>
+          <div class="footer-col" id="uni-col">
+            <p id="uni-p">
+              This course brought to you by the University of Toronto Faculty of Computer Science.
+              <br>
+              <a href="https://www.utsc.utoronto.ca/cms/faculty-of-computer-science">
+                <br>Click here to visit our faculty's website.
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
     
   </body>
 </html>

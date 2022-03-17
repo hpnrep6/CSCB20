@@ -10,16 +10,20 @@ body {
     padding-left: 3rem;
     color: white;
     margin: 0;
+    font-family: 'Roboto';
 }
 
 .welcome h2 {
     font-size: 2rem;
     color: white;
     padding-left: 4rem;
+    font-family: 'Raleway';
 }
 
 .welcome {
     background: linear-gradient(40deg, rgb(0, 0, 160) 0%, rgb(0, 150, 220) 100%);
+    background-image: url("../images/bkg.jpg");
+    background-size: 130%;
     height: 120vh;
     z-index: -5;
 }
@@ -71,11 +75,12 @@ h3 {
     z-index: 300;
     position: relative;
     transform: rotate(-3deg) translateY(-5vh);
+    font-family: 'Raleway';
 }
 
 .prereq:after {
     transform: skewY(3deg) !important;
-    background-color: aqua;
+    background-color: #54c6ff;
     height: 140%;
     z-index: 0;
 }
@@ -101,12 +106,22 @@ h3 {
     color: white;
     font-size: 9rem;
     word-wrap: break-word;
+    font-family: 'Raleway';
 }
 
 .syllabus h2 {
     margin-top: 1rem;
     padding-left: 4rem;
     color: white;
+    font-family: 'Roboto';
+}
+
+.syllabus a {
+    color: #b5d5ff;
+}
+
+.syllabus a:hover {
+    color: #86b9fb;
 }
 
 .syllabus-grid {
@@ -125,7 +140,8 @@ h3 {
     padding-left: 5rem;
     padding-right: 2rem;
     color: white;
-    font-size: 1.2rem
+    font-size: 1.2rem;
+    font-family: 'Roboto';
 }
 
 .syllabus:after {
@@ -159,6 +175,7 @@ centre {
 centre h1 {
     font-size: 5rem;
     text-align: center;
+    font-family: 'Raleway';
 }
 
 #inst-list {
@@ -169,10 +186,29 @@ centre h1 {
 }
 
 inst {
-    margin: 0 1rem;
+    margin: 1rem 1rem;
+    background: linear-gradient(12deg, #177fff 0%, #7e00d9 100%);
+    padding: 1rem;
+    border-color: white;
+    border-style: solid;
+    border-width: 4px;
+    width: 20rem;
+}
+
+inst h3 {
+    font-family: 'Raleway';
+    font-size: 2rem;
+    align-items: center;
+}
+
+inst h4 {
+    font-family: 'Raleway';
+    font-size: 1.5rem;
+    text-align: center;
+    word-wrap: normal;
 }
 
 inst img {
-    width: calc(max(20vw, 200px));
-    height: calc(max(25vw, 250px));
+    width: calc(min(max(20vw, 200px), 18rem));
+    height: calc(min(max(25vw, 250px), 23rem));
 }
