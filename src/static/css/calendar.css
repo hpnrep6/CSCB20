@@ -10,8 +10,9 @@
 }
 
 .calendar {
-    margin-top: 20px;
+    padding-top: 20px;
     width: 100%;
+    background: linear-gradient(rgb(214, 245, 61) 0%, rgb(110,110,110) 100%);
 }
 
 .title {
