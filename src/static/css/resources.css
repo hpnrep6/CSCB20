@@ -78,6 +78,13 @@
     font-family: sans-serif;
 }
 
+.res a:hover {
+    font-size: 1.4rem;
+    color: #ead0fb;
+    text-align: center;
+    font-family: sans-serif;
+}
+
 .res textarea {
     font-family: sans-serif;
     font-size: 1rem;

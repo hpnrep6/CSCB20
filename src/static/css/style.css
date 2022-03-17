@@ -184,6 +184,10 @@ body {
     color: white;
 }
 
+#uni-p a:hover{
+    color: rgb(179, 232, 251);
+}
+
 .center-tool {
     display: flex;
     justify-items: center;

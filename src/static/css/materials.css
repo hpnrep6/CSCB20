@@ -53,11 +53,16 @@ h2 {
     font-family: "Roboto";
 }
 
-a {
+.week a {
     text-decoration: none;
     font-size: 1.2rem;
     color: rgb(51, 102, 255);
     font-family: "Roboto";
+}
+
+.week a:hover {
+    color: rgb(10, 45, 153);
+    text-decoration: underline;
 }
 
 h3 {

@@ -64,8 +64,12 @@ body {
     font-size: 2rem;
 }
 
-#assignment-info a{
+#assignment-info a {
     color: #91ceff;
+}
+
+#assignment-info a:hover {
+    color: #4fb0ff;
 }
 
 .project {
@@ -158,4 +162,8 @@ body {
 
 .project a {
     color: #bfe5ff;
+}
+
+.project a:hover {
+    color: #80c9fa;
 }

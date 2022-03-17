@@ -120,6 +120,10 @@ h3 {
     color: #b5d5ff;
 }
 
+.syllabus a:hover {
+    color: #86b9fb;
+}
+
 .syllabus-grid {
     display: grid;
     grid-template-columns: 50% 50%;
