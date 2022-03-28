@@ -1,0 +1,41 @@
+
+.title{
+    text-align: center;
+    color: white;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+}
+
+.calendar {
+    padding-top: 20px;
+    width: 100%;
+    background: linear-gradient(rgb(214, 245, 61) 0%, rgb(110,110,110) 100%);
+}
+
+.title {
+    height: fit-content;
+    width: 100%;
+    background: linear-gradient( rgb(102, 212, 38) 0%, rgb(214, 245, 61) 100%);
+}
+
+.title h1 {
+    font-size: 10vw;
+    margin: 10px;
+    font-family: 'Raleway';
+}
+
+.calendar-cont {
+    display: grid;
+    grid-template-columns: 10% 80% 10%;
+    height: fit-content;
+}
+
+.trig {
+    width: 100%;
+    height: 100%;
+    transform: rotate(180deg);
+    background: linear-gradient(rgb(110,110,110) 0%, rgb(214, 245, 61) 100%);
+}
