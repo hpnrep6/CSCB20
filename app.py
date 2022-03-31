@@ -47,7 +47,7 @@ def api_user():
         Last_Name = req.get('Last_Name')
         Status = req.get('Status')
         Password = req.get('Password')
-        
+
         global db
         cursor = db.cursor()
         # try:
@@ -78,7 +78,15 @@ def api_session():
         # Term
         pass
     if request.method == 'GET':
-        pass
+        # Name
+        req = request.form
+        name = req.get('Name')
+        if name != None:
+            # return row with primary key name
+            pass
+        else:
+            # return all
+            pass
     return 'Hello, World!'
 
 @app.route('/api/grade', methods = ['POST', 'GET'])
@@ -88,7 +96,15 @@ def api_grade():
         # Assignment_ID
         pass
     if request.method == 'GET':
-        pass
+        # ID
+        req = request.form
+        name = req.get('ID')
+        if name != None:
+            # return row with primary key id
+            pass
+        else:
+            # return all
+            pass
     return 'Hello, World!'
 
 @app.route('/api/assignment', methods = ['POST', 'GET'])
@@ -99,7 +115,15 @@ def api_assignment():
         # Session_ID
         pass
     if request.method == 'GET':
-        pass
+         # ID
+        req = request.form
+        name = req.get('ID')
+        if name != None:
+            # return row with primary key id
+            pass
+        else:
+            # return all
+            pass
     return 'Hello, World!'
 
 @app.route('/api/assignment/student', methods = ['POST', 'GET'])
@@ -107,10 +131,9 @@ def api_student_assignment():
     if request.method == 'POST':
         # UtorID
         # Assignment_ID
-
-        
         pass
     if request.method == 'GET':
+        # return all
         pass
     return 'Hello, World!'
 
@@ -121,7 +144,15 @@ def api_feedback():
         # Assignment
         pass
     if request.method == 'GET':
-        pass
+        # ID
+        req = request.form
+        name = req.get('ID')
+        if name != None:
+            # return row with primary key id
+            pass
+        else:
+            # return all
+            pass
     return 'Hello, World!'
 
 @app.route('/api/regrade', methods = ['POST', 'GET'])
@@ -131,6 +162,15 @@ def api_remark():
         # Content
         pass
     if request.method == 'GET':
+        # ID
+        req = request.form
+        name = req.get('ID')
+        if name != None:
+            # return row with primary key id
+            pass
+        else:
+            # return all
+            pass
         pass
     return 'Hello, World!'
 
