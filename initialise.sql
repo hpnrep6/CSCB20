@@ -1,0 +1,56 @@
+PRAGMA foregin_keys = ON;
+
+CREATE TABLE IF NOT EXISTS User (
+    UtorID VARCHAR(32) NOT NULL PRIMARY KEY,
+    First_Name VARCHAR(128) NOT NULL,
+    Middle_Name VARCHAR(128),
+    Last_Name VARCHAR(128),
+    Status NOT NULL CHECK (Status in ('Instructor', 'Student')),
+    Password VARCHAR(256) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS Session (
+    Name VARCHAR(32) NOT NULL PRIMARY KEY,
+    Instructor VARCHAR(32) NOT NULL,
+    Year INTEGER,
+    Term VARCHAR(16),
+    FOREIGN KEY(Instructor) REFERENCES User(UtorID)
+);
+
+CREATE TABLE IF NOT EXISTS Assignment (
+    Id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    Name VARCHAR(256),
+    Description VARCHAR(1024),
+    Session VARCHAR(32) NOT NULL,
+    FOREIGN KEY (Session) REFERENCES Session(Name)
+);
+
+CREATE TABLE IF NOT EXISTS Grade (
+    Id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    Student_Id VARCHAR(32),
+    Assignment INTEGER,
+    FOREIGN KEY(Student_Id) REFERENCES User(UtorID),
+    FOREIGN KEY (Assignment) REFERENCES Session
+);
+
+CREATE TABLE IF NOT EXISTS Feedback (
+    Id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    Content VARCHAR(1024),
+    Session VARCHAR(32) NOT NULL,
+    FOREIGN KEY (Session) REFERENCES Session(Name)
+);
+
+CREATE TABLE IF NOT EXISTS Student_Assignments (
+    Assignment_Id INTEGER NOT NULL,
+    Student_Id VARCHAR(32) NOT NULL,
+    PRIMARY KEY (Assignment_Id, Student_Id),
+    FOREIGN KEY (Assignment_Id) REFERENCES Assignment(Id),
+    FOREIGN KEY (Student_Id) REFERENCES User(UtorID)
+);
+
+CREATE TABLE IF NOT EXISTS Regrade_Request (
+    Id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    Grade_Id INTEGER,
+    Content VARCHAR(1024),
+    FOREIGN KEY (Grade_Id) REFERENCES Grade(Id)
+);
