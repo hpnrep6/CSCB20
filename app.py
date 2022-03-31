@@ -29,9 +29,13 @@ create_db()
 @app.route('/api/user', methods = ['POST', 'GET'])
 def api_user():
     if request.method == 'POST':
+        # UtorID
+        # First_Name
+        # Middle_Name
+        # Last_Name
+        # Status
+        # Pasword
         pass
-        # except Exception as e:
-        #     print(e)
     if request.method == 'GET':
         pass
     return 'Hello, World!'
@@ -39,6 +43,10 @@ def api_user():
 @app.route('/api/session', methods = ['POST', 'GET'])
 def api_session():
     if request.method == 'POST':
+        # Name
+        # Instructor
+        # Year
+        # Term
         pass
     if request.method == 'GET':
         pass
@@ -47,6 +55,29 @@ def api_session():
 @app.route('/api/grade', methods = ['POST', 'GET'])
 def api_grade():
     if request.method == 'POST':
+        # UtorID
+        # Assignment_ID
+        pass
+    if request.method == 'GET':
+        pass
+    return 'Hello, World!'
+
+@app.route('/api/assignment', methods = ['POST', 'GET'])
+def api_assignment():
+    if request.method == 'POST':
+        # Name
+        # Description
+        # Session_ID
+        pass
+    if request.method == 'GET':
+        pass
+    return 'Hello, World!'
+
+@app.route('/api/assignment/student', methods = ['POST', 'GET'])
+def api_student_assignment():
+    if request.method == 'POST':
+        # UtorID
+        # Assignment_ID
         pass
     if request.method == 'GET':
         pass
@@ -55,22 +86,18 @@ def api_grade():
 @app.route('/api/feedback', methods = ['POST', 'GET'])
 def api_feedback():
     if request.method == 'POST':
+        # Student_ID
+        # Assignment
         pass
     if request.method == 'GET':
         pass
     return 'Hello, World!'
 
-@app.route('/api/evaluations', methods = ['POST', 'GET'])
-def api_evaluations():
-    if request.method == 'POST':
-        pass
-    if request.method == 'GET':
-        pass
-    return 'Hello, World!'
-
-@app.route('/api/remark', methods = ['POST', 'GET'])
+@app.route('/api/regrade', methods = ['POST', 'GET'])
 def api_remark():
     if request.method == 'POST':
+        # Grade_ID
+        # Content
         pass
     if request.method == 'GET':
         pass
