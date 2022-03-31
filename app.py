@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, g
+from flask import Flask, render_template, request, jsonify, send_file
 import sqlite3
 
 app = Flask(__name__)
@@ -8,7 +8,7 @@ SQL_INIT_PATH = 'initialise.sql'
 
 def connect_db():
     global db
-    db = sqlite3.connect(DB_PATH)
+    db = sqlite3.connect(DB_PATH, check_same_thread = False)
 
 
 def create_db():
@@ -26,19 +26,48 @@ def create_db():
 connect_db()
 create_db()
 
+def castSQL(str):
+    return '\'' + str + '\''
+
 @app.route('/api/user', methods = ['POST', 'GET'])
 def api_user():
+
     if request.method == 'POST':
         # UtorID
         # First_Name
         # Middle_Name
         # Last_Name
         # Status
-        # Pasword
-        pass
+        # Password
+        req = request.form
+
+        UtorID = req.get('UtorID')
+        First_Name = req.get('First_Name')
+        Middle_Name = req.get('Middle_Name')
+        Last_Name = req.get('Last_Name')
+        Status = req.get('Status')
+        Password = req.get('Password')
+        
+        global db
+        cursor = db.cursor()
+        # try:
+        cursor.execute('''
+            INSERT INTO User (UtorID, First_Name, Middle_Name, Last_Name, Status, Password)
+            VALUES({}, {}, {}, {}, {}, {})
+        '''.format(castSQL(UtorID),
+                   castSQL(First_Name),
+                   castSQL(Middle_Name),
+                   castSQL(Last_Name),
+                   castSQL(Status),
+                   castSQL(Password)))
+        cursor.close()
+        # except E:
+        #     return 'owo'
     if request.method == 'GET':
         pass
-    return 'Hello, World!'
+    a = {}
+    a['as'] = 2
+    return jsonify(a)
 
 @app.route('/api/session', methods = ['POST', 'GET'])
 def api_session():
@@ -78,6 +107,8 @@ def api_student_assignment():
     if request.method == 'POST':
         # UtorID
         # Assignment_ID
+
+        
         pass
     if request.method == 'GET':
         pass
@@ -131,6 +162,10 @@ def user():
 def feedback():
     return 'Hello, World!'
 
+@app.route('/favicon.ico')
+def favicon():
+    return send_file('./static/favicon.ico', mimetype='image/svg+xml')
+
 @app.route('/')
 def root():
     return render_template('index.html')
@@ -140,5 +175,6 @@ def home(file):
     return render_template(file)
 
 @app.teardown_appcontext
-def close_db():
+def close_db(exception):
+    global db
     db.close()
