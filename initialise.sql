@@ -1,4 +1,4 @@
-PRAGMA foregin_keys = ON;
+PRAGMA foreign_keys = ON;
 
 CREATE TABLE IF NOT EXISTS User (
     UtorID VARCHAR(32) NOT NULL PRIMARY KEY,
