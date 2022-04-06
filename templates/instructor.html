@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <link rel="icon" type="image/x-icon" href="./static/images/db.svg">
     <link rel="stylesheet" href="./static/css/style.css">
-    <link rel="stylesheet" href="./static/css/calendar.css">
-    <title>Calendar</title>
+    <link rel="stylesheet" href="./static/css/instructor.css">
+    <title>CSCB20</title>
   </head>
   <body>
     <div class="header-container">
@@ -30,7 +30,8 @@
         </div>
       </div>
     </div>
-    
+
+        
     <div id='dropdowns'>
       <div class='dropdown-content' id='cscb20-drop'>
         <a class="header-element dropdown-element" href="index.html">Home</a>
@@ -56,31 +57,53 @@
         <a class="header-element dropdown-element" href="account.html">Account</a>
       </div>
     </div>
-    
+  <!-- https://commons.wikimedia.org/wiki/File:Hamburger_icon_white.svg -->
 
-    <div class="content">
-      <div class="title">
-        <h1>
-          Calendar
-        </h1>
-      </div>
-      <div class="calendar-cont">
-        <svg class="trig" viewBox="0 0 100 100" preserveAspectRatio="none" fill="#2828c8">
-          <polygon points="0,0 100,100 100,0">
-              
-          </polygon>
-        </svg>
-        <div class="center-tool calendar">
-            <iframe src="https://calendar.google.com/calendar/embed?src=f2oogqnfo1q728k3lcbtr4v478%40group.calendar.google.com&amp;ctz=America%2FToronto" style="border: 0" width="800" height="600" frameborder="0" scrolling="no" display="center"></iframe>
+
+    <div id="title">
+        <div class="center-tool">
+            <h1>
+                Instructor Centre
+            </h1>
         </div>
-        <svg class="trig" viewBox="0 0 100 100" preserveAspectRatio="none" fill="#2828c8">
-          <polygon points="0,0 100,0, 0,100">
-              
-          </polygon>
-        </svg>
-      </div>
+        <div class="center-tool">
+            <h2>
+                Some useful resources to assist you in this course.
+            </h2>
+        </div>
+    </div>
+    
+    <div class='controls'>
+        <div id='add-assignment'>
+            <h2>
+                Create new assignment
+            </h2>
+            <form method='post' action='/api'>
+                <h3>
+                    Name
+                </h3>
+                <input type='text'>
+                <h3>
+                    Name
+                </h3>
+                <input type='text'>
+                <input type='text'>
+            </form>
+        </div>
+
+        <div id='add-sesssion'>
+            <h2>
+                Create new session
+            </h2>
+            <form>
+                <input type='text'>
+                <input type='text'>
+                <input type='text'>
+            </form>
+        </div>
     </div>
 
+    
     <div class="footer">
       <div class="centre-tool">
         <div class="footer-col">
@@ -103,6 +126,8 @@
         </div>
       </div>
     </div>
+    
     <script src='./static/js/dropdown.js'></script>
+    <script src='./static/js/instructor.js'></script>
   </body>
 </html>

@@ -1,0 +1,29 @@
+#title {
+    background-color: lightblue;
+    height: 35vw;
+    border-bottom: white solid 3px;
+}
+
+#title h1 {
+    font-size: 5vw;
+}
+
+#title h2 {
+    font-size: 2vw;
+}
+
+.controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+}
+
+form input {
+    margin: 5px;
+}
