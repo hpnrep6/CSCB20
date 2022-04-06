@@ -1,0 +1,38 @@
+#content {
+    display: grid;
+    grid-template-columns: 40% 60%;
+    height: 100vh;
+    padding: 3rem;
+}
+
+
+#all-info {
+    display: flex;
+    flex-direction: column;
+    padding: 1.2rem;
+    margin-left: 5rem;
+}
+
+
+
+body {
+    background: linear-gradient(22deg, rgb(202, 255, 177) 0%, rgb(140, 151, 255) 100%);
+}
+
+#profile-pic {
+    height: calc((100vw - 6rem)*(.4));;
+    width: calc((100vw - 6rem)*(.4));
+    border-radius: 50%;
+    background-color: coral;
+}
+
+#profile-name {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+}
+
+#profile-name h1 {
+    padding-bottom: 1rem;
+}

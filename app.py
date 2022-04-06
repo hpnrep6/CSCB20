@@ -1,7 +1,9 @@
+from ast import Pass
 from curses import termattrs
 from click import password_option
 from flask import Flask, render_template, request, jsonify, send_file
 import sqlite3
+from flask_bcrypt import bcrypt
 
 app = Flask(__name__)
 
@@ -51,6 +53,12 @@ def api_user():
         Status = req.get('Status')
         Password = req.get('Password')
 
+        pw_hash = bcrypt.generate_password_hash(Password).decode('utf-8')
+        if not bcrypt.check_password_hash(pw_hash, Password):
+             # returns True
+            return 'An error occured while hashing the password.'
+
+        Password = pw_hash
         global db
         db = connect_db()
         cursor = db.cursor()

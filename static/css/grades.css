@@ -1,0 +1,63 @@
+.title {
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom-style: solid;
+    border-bottom-color: white;
+    border-bottom-width: 3px;
+    background: linear-gradient(65deg, rgb(182, 255, 113) 0%, rgb(113, 255, 201) 100%);
+}
+
+.title h1 {
+    font-size: calc(min(13vw, 10rem));
+    margin-bottom: 1rem;
+}
+
+.grades {
+    display: flex;
+    flex-direction: column;
+    padding: 3rem 4rem 3rem 4rem;
+    background: linear-gradient(65deg, rgb(114, 255, 173) 0%, rgb(129, 245, 255) 100%);
+}
+
+.grade-entry {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem;
+}
+
+.grade-info {
+    display: grid;
+    grid-template-columns: calc(100% - 10rem) 5rem 5rem;
+}
+
+.grade-grid {
+    border-radius: 10px;
+    background-color: white;
+    border-color: rgb(185, 185, 185);
+    border-style: solid;
+    border-width: 2px;
+    margin-right: 1rem;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.grade-moreinfo:hover {
+    background: linear-gradient(34deg, rgb(220, 255, 211) 0%, rgb(187, 255, 182) 100%);
+    cursor: pointer;
+}
+
+.grade-details {
+    margin-top: 1rem;
+    background-color: white;
+    display: none;
+    flex-direction: column;
+}
+
+.regrade-button {
+    height: 3rem;
+    cursor: pointer;
+}

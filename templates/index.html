@@ -16,21 +16,48 @@
             &nbspCSCB20
         </div>
       </div>
-      <div class="header">
-        <a class="header-element" href="index.html">Home</a>
-        <a class="header-element" href="weekly-materials.html">Lectures & Labs</a>
-        <a class="header-element" href="assignments.html">Assignments</a>
-        <a class="header-element" href="assignments.html#tests">Tests</a>
-        <a class="header-element" href="resources.html">Resources</a>
-        <a class="header-element" href="calendar.html">Calendar</a>
-        <a class="header-element" href="index.html#syllabus">Syllabus</a>
-        <a class="header-element" href="resources.html#piazza">Piazza</a>
-        <a class="header-element" href="resources.html#markus">MarkUs</a>
-        <a class="header-element" href="index.html#instructors">Course Team</a>
-        <a class="header-element" href="resources.html#feedback">Feedback</a>
+      <div class="header" id='header'>
+        <div class='dropdown-titles'>
+          <p class='header-element dropdown-title' onclick='dropdownShow(this)' id='cscb20'>
+            Course
+          </p>
+          <p class='header-element dropdown-title' onclick='dropdownShow(this)' id='resources'>
+            Resources
+          </p>
+          <p class='header-element dropdown-title' onclick='dropdownShow(this)' id='personal'>
+            Personal
+          </p>
+        </div>
+      </div>
+    </div>
+    
+    <div id='dropdowns'>
+      <div class='dropdown-content' id='cscb20-drop'>
+        <a class="header-element dropdown-element" href="index.html">Home</a>
+        <a class="header-element dropdown-element" href="weekly-materials.html">Lectures & Labs</a>
+        <a class="header-element dropdown-element" href="assignments.html">Assignments</a>
+        <a class="header-element dropdown-element" href="assignments.html#tests">Tests</a>
+        <a class="header-element dropdown-element" href="resources.html">Resources</a>
+        <a class="header-element dropdown-element" href="calendar.html">Calendar</a>
+      </div>
+      <div class='dropdown-content' id='resources-drop'>
+        <a class="header-element dropdown-element" href="index.html#syllabus">Syllabus</a>
+        <a class="header-element dropdown-element" href="resources.html#piazza">Piazza</a>
+        <a class="header-element dropdown-element" href="resources.html#markus">MarkUs</a>
+        <a class="header-element dropdown-element" href="index.html#instructors">Course Team</a>
+        <a class="header-element dropdown-element" href="resources.html#feedback">Feedback</a>
+      </div>
+      <div class='dropdown-content' id='personal-drop'>
+        <a class="header-element dropdown-element" href="grades.html">Grades</a>
+        <a class="header-element dropdown-element" href="regrades.html">Regrades</a>
+        <a class="header-element dropdown-element" href="feedback.html">Feedback</a>
+        <a class="header-element dropdown-element" href="students.html">Students</a>
+        <a class="header-element dropdown-element" href="instructor.html">Instructor Centre</a>
+        <a class="header-element dropdown-element" href="account.html">Account</a>
       </div>
     </div>
 
+    
     <!-- https://commons.wikimedia.org/wiki/File:Hamburger_icon_white.svg -->
 
     <div class="info">
@@ -307,5 +334,6 @@
       </div>
     </div>
     
+    <script src='./static/js/dropdown.js'></script>
   </body>
 </html>
