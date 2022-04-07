@@ -15,4 +15,12 @@ let appendFeedback = (title, date, details) => {
     </div>`;
 }
 
-appendFeedback('taco paco taco', '2022,22,22', 'staco')
+fetch('/api/feedback').then((res) => {
+    return res.json()
+}).then((res) => {
+    for (i in res) {
+        let response = res[i];
+
+        appendFeedback('', '', response[0]);
+    }
+})

@@ -6,46 +6,33 @@ CREATE TABLE IF NOT EXISTS User (
     Middle_Name VARCHAR(128),
     Last_Name VARCHAR(128),
     Status NOT NULL CHECK (Status in ('Instructor', 'Student')),
-    Password VARCHAR(256) NOT NULL
-);
-
-CREATE TABLE IF NOT EXISTS Session (
-    Name VARCHAR(32) NOT NULL PRIMARY KEY,
-    Instructor VARCHAR(32) NOT NULL,
-    Year INTEGER,
-    Term VARCHAR(16),
+    Password VARCHAR(256) NOT NULL,
+    Instructor VARCHAR(32),
     FOREIGN KEY(Instructor) REFERENCES User(UtorID)
 );
 
 CREATE TABLE IF NOT EXISTS Assignment (
-    Id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     Name VARCHAR(256),
     Description VARCHAR(1024),
-    Session VARCHAR(32) NOT NULL,
-    FOREIGN KEY (Session) REFERENCES Session(Name)
+    Instructor VARCHAR(32) NOT NULL,
+    PRIMARY KEY (Name, Instructor),
+    FOREIGN KEY (Instructor) REFERENCES User(UtorID)
 );
 
 CREATE TABLE IF NOT EXISTS Grade (
-    Id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    Assignment VARCHAR(256),
     Student_Id VARCHAR(32),
-    Assignment INTEGER,
+    Grade FLOAT,
+    PRIMARY KEY(Assignment, Student_Id),
     FOREIGN KEY(Student_Id) REFERENCES User(UtorID),
-    FOREIGN KEY (Assignment) REFERENCES Session
+    FOREIGN KEY (Assignment) REFERENCES Assignment(Name)
 );
 
 CREATE TABLE IF NOT EXISTS Feedback (
     Id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     Content VARCHAR(1024),
-    Session VARCHAR(32) NOT NULL,
-    FOREIGN KEY (Session) REFERENCES Session(Name)
-);
-
-CREATE TABLE IF NOT EXISTS Student_Assignments (
-    Assignment_Id INTEGER NOT NULL,
-    Student_Id VARCHAR(32) NOT NULL,
-    PRIMARY KEY (Assignment_Id, Student_Id),
-    FOREIGN KEY (Assignment_Id) REFERENCES Assignment(Id),
-    FOREIGN KEY (Student_Id) REFERENCES User(UtorID)
+    Instructor VARCHAR(32) NOT NULL,
+    FOREIGN KEY (Instructor) REFERENCES Instructor(UtorID)
 );
 
 CREATE TABLE IF NOT EXISTS Regrade_Request (

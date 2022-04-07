@@ -148,6 +148,19 @@ function createStudent(name, ref, status='Student') {
 }
 
 
-let s = createStudent('taco', 'pacoa');
-s.addAssignment('pacotaco', 5);
-s.addAssignment('pacotaco', 15.2);
+fetch('/api/grade').then((res) => {
+    return res.json();
+}).then( (res) => {
+    for (i in res) {
+        let a = res[i];
+        let utorid = a[0];
+
+        if (idMap.has(utorid)) {
+            idMap.get(utorid).addAssignment(a[4], a[5])
+        } else {
+            let s = createStudent(a[1] + ' ' + a[3], a[0]);
+            idMap.set(utorid, s);
+            s.addAssignment(a[4], a[5])
+        }
+    }
+})

@@ -1,0 +1,15 @@
+.login-cont {
+    display: flex;
+    flex-direction: column;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+}
+
+form input {
+    width: 300px;
+    margin: 20px;
+}

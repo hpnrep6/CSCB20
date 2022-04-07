@@ -55,6 +55,7 @@
         <a class="header-element dropdown-element" href="students.html">Students</a>
         <a class="header-element dropdown-element" href="instructor.html">Instructor Centre</a>
         <a class="header-element dropdown-element" href="account.html">Account</a>
+        <a class="header-element dropdown-element" href="logout">Log Out</a>
       </div>
     </div>
   <!-- https://commons.wikimedia.org/wiki/File:Hamburger_icon_white.svg -->
@@ -78,27 +79,17 @@
             <h2>
                 Create new assignment
             </h2>
-            <form method='post' action='/api'>
+            <form method='post' action='/api/assignment'>
                 <h3>
                     Name
                 </h3>
-                <input type='text'>
+                <input type='text' name="Name">
                 <h3>
                     Name
                 </h3>
-                <input type='text'>
-                <input type='text'>
-            </form>
-        </div>
-
-        <div id='add-sesssion'>
-            <h2>
-                Create new session
-            </h2>
-            <form>
-                <input type='text'>
-                <input type='text'>
-                <input type='text'>
+                <input type='text' name="Description">
+                <input type='text' name="Instructor" readonly="readonly" id="instr">
+                <input type="submit" value="Create">
             </form>
         </div>
     </div>

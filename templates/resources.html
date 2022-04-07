@@ -54,6 +54,7 @@
           <a class="header-element dropdown-element" href="students.html">Students</a>
           <a class="header-element dropdown-element" href="instructor.html">Instructor Centre</a>
           <a class="header-element dropdown-element" href="account.html">Account</a>
+          <a class="header-element dropdown-element" href="logout">Log Out</a>
         </div>
       </div>
 
@@ -230,16 +231,7 @@
                 </div>
                 <div class="center-tool">
                     <div>
-                        <div class="center-tool">
-                            <h6>
-                                Feedback title
-                            </h6>
-                        </div>
-                        <br>
-                        <div class="center-tool">
-                            <textarea rows="1" cols="80"></textarea>
-                        </div>
-                        <br>
+    
                         <div class="center-tool">
                             <h6>
                                 Feedback content
@@ -247,18 +239,16 @@
                         </div>
                         <br>
                         <div class="center-tool">
-                            <textarea rows="20" cols="80"></textarea>
+                            <textarea rows="20" cols="80" id="feedback-content"></textarea>
                         </div>
+                        <br>
                         <div class="center-tool">
-                            <h6>
-                                Your contact information (optional)
+                            <h6 id="feedback-instructor">
+                                Your instructor: 
                             </h6>
                         </div>
                         <div class="center-tool">
-                            <textarea rows="1" cols="80"></textarea>
-                        </div>
-                        <div class="center-tool">
-                            <button>
+                            <button onclick="submitFeedback()">
                                 Submit
                             </button>
                         </div>
@@ -294,5 +284,6 @@
         </div>
       </div>
       <script src='./static/js/dropdown.js'></script>
+      <script src='./static/js/resources.js'></script>
   </body>
 </html>

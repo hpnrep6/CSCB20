@@ -9,32 +9,32 @@ let formatGrade = (title, grade, details) => {
 
     return `
     <div class='grade-entry' id=`+id+`>
-    <div class='grade-info'>
-        <div class='grade-title grade-grid'>
-            <h2>` + title + `
-            </h2>
-        </div>
-        <div class='grade-value grade-grid'>
-            <h4 class='center-tool'>
-            `+grade+`%
-            </h4>
-        </div>
-        <div class='grade-moreinfo grade-grid' onclick='moreinfo(this)' id=`+id+`b>
-            <img src='./static//images/Information_icon.svg'>
-            <!-- https://commons.wikimedia.org/wiki/File:Information_icon.svg -->
-        </div>
-        </div>
+        <div class='grade-info'>
+            <div class='grade-title grade-grid'>
+                <h2>` + title + `
+                </h2>
+            </div>
+            <div class='grade-value grade-grid'>
+                <h4 class='center-tool'>
+                `+grade+`%
+                </h4>
+            </div>
+            <div class='grade-moreinfo grade-grid' onclick='moreinfo(this)' id=`+id+`b>
+                <img src='./static//images/Information_icon.svg'>
+                <!-- https://commons.wikimedia.org/wiki/File:Information_icon.svg -->
+            </div>
+            </div>
 
-        <div class='grade-details grade-grid'>
-        <h2>
-            Details
-        </h2>
-        <p>
-            `+details+`
-        </p>
-        <button class='regrade-button'>
-            Request Regrade
-        </button>
+            <div class='grade-details grade-grid'>
+            <h2>
+                Details
+            </h2>
+            <p>
+                `+details+`
+            </p>
+            <button class='regrade-button'>
+                Request Regrade
+            </button>
         </div>
     </div>`;
 }
@@ -55,6 +55,11 @@ let moreinfo = (e) => {
     }
 }
 
-appendGrade('Taco taco ate the paco', 54, 'Taco ate paco there daco');
-appendGrade('Paco taco ate the paco', 54, 'Taco ate paco there daco');
-appendGrade('Xaco taco ate the paco', 54, 'Taco ate paco there daco');
+fetch('/api/grade').then((res) => {
+    return res.json();
+}).then((json) => {
+    console.log(json)
+    for (grade in json) {
+        appendGrade(json[grade][0], json[grade][2], json[grade][1]);
+    }
+});
