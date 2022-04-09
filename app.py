@@ -1,4 +1,5 @@
 from ast import Pass
+from ctypes import cast
 from curses import termattrs
 from click import password_option
 from flask import Flask, redirect, render_template, request, jsonify, send_file, session
@@ -40,6 +41,9 @@ connect_db()
 create_db()
 
 def castSQL(str):
+    if str == None:
+        return 'null'
+
     return '\'' + str + '\''
 
 @app.route('/api/user', methods = ['POST', 'GET'])
@@ -162,30 +166,52 @@ def api_instructors():
     a = records
     return jsonify(a)
 
-@app.route('/api/grade', methods = ['POST', 'GET'])
+@app.route('/api/grade', methods = ['POST', 'GET', 'PATCH'])
 def api_grade():
     if request.method == 'POST':
         # UtorID
-        # Assignment_ID
+        # Assignment
         req = request.form
 
         UtorID = req.get('UtorID')
-        Assignment_ID = req.get('Assignment_ID')
+        Assignment = req.get('Assignment')
+        Grade = req.get('Grade')
 
         global db
         db = connect_db()
         cursor = db.cursor()
-        try:
-            cursor.execute('''
-                INSERT INTO Grade (UtorID, Assignment_ID)
-                VALUES({}, {})
-            '''.format(castSQL(UtorID),
-                    castSQL(Assignment_ID)))
-            db.commit()
-            cursor.close()
-        except:
-            db.rollback()
-            return 'An error occured.'
+
+        result = cursor.execute('''
+            SELECT *
+            FROM Grade
+            WHERE Assignment = {} AND Student_ID = {}
+        '''.format(castSQL(Assignment), castSQL(UtorID))).fetchone()
+        
+        if result == None:
+            try:
+                cursor.execute('''
+                    INSERT INTO Grade (Student_Id, Assignment)
+                    VALUES({}, {})
+                '''.format(castSQL(UtorID),
+                        castSQL(Assignment)))
+                db.commit()
+                cursor.close()
+            except:
+                db.rollback()
+                return 'An error occured.'
+        else:
+            try:
+                cursor.execute('''
+                    UPDATE Grade
+                    SET Grade = {}
+                    WHERE Assignment = {} AND Student_ID = {}
+                '''.format(Grade, castSQL(Assignment), castSQL(UtorID)))
+                db.commit()
+                cursor.close()
+            except:
+                db.rollback()
+                return 'An error occured.'
+
     if request.method == 'GET':
         
         name = session.get('UtorID')
@@ -198,12 +224,48 @@ def api_grade():
                             ON g.Student_Id = u.UtorID
                             WHERE u.Instructor = {}
                             '''.format(castSQL(name))).fetchall()
+            assignments = db.execute('''
+            SELECT Name
+            FROM Assignment
+            GROUP BY Name
+            ''').fetchall()
             db.close()
-            return jsonify(post)
+
+            names = {}
+
+            names['_assignments'] = assignments
+
+            for entry in post:
+                if not entry[0] in names:
+                    names[entry[0]] = []
+                names[entry[0]].append([entry[1:]])
+            return jsonify(names)
         else:
             return 'Invalid'
 
     return 'Invalid'
+
+@app.route('/api/grade/student', methods = ['GET'])
+def api_grade_student():
+    name = session.get('UtorID')
+
+    if name != None:
+        db = connect_db()
+        post = db.execute('''
+                        SELECT g.Assignment, g.Grade, a.Description
+                        FROM (Grade as g LEFT JOIN User as u
+                        ON g.Student_Id = u.UtorID)
+                        LEFT JOIN Assignment as a
+                        ON g.Assignment = a.Name
+                        WHERE g.Student_Id = {}
+                        '''.format(castSQL(name))).fetchall()
+
+        db.close()
+
+        return jsonify(post)
+    else:
+        return 'Invalid'
+
 
 @app.route('/api/assignment', methods = ['POST', 'GET'])
 def api_assignment():
@@ -315,53 +377,67 @@ def api_feedback():
 @app.route('/api/regrade', methods = ['POST', 'GET'])
 def api_remark():
     if request.method == 'POST':
-        # Grade_ID
+        # Assignment
         # Content
         req = request.form
 
-        Grade_ID = req.get('Grade_ID')
-        Content = req.get('Content')
+        utorid = session.get('UtorID')
 
+        Assignment = req.get('Assignment')
+        Content = req.get('Content')#.replace('\'', '\'\'')
+        print(Content)
+        
         global db
         db = connect_db()
         cursor = db.cursor()
         try:
             cursor.execute('''
-                INSERT INTO Regrade_Request (Student_ID, Assignment)
-                VALUES({}, {})
-            '''.format(castSQL(Grade_ID),
+                INSERT INTO Regrade_Request (Student_ID, Assignment, Content)
+                VALUES({}, {}, {})
+            '''.format(castSQL(utorid),
+                    castSQL(Assignment),
                     castSQL(Content)))
             db.commit()
             cursor.close()
+            return 'Success'
         except:
             db.rollback()
             return 'An error occured.'
     if request.method == 'GET':
         # ID
-        req = request.form
-        name = req.get('Id')
+        name = session.get('UtorID')
         if name != None:
             # return row with primary key id
             db = connect_db()
-            post = db.execute('SELECT * FROM Regrade_Request WHERE Id = ?',
-                                (name)).fetchone()
+            regrades = db.execute('''
+                            SELECT Assignment, UtorID, First_Name, Last_Name, Content
+                            FROM Regrade_Request LEFT JOIN User
+                            ON Student_ID = UtorID
+                            WHERE Instructor = {}
+                            '''.format(castSQL(name))).fetchall()
+
+            assignments = db.execute('''
+                            SELECT Name
+                            FROM Assignment
+                            WHERE Instructor = {}
+                            '''.format(castSQL(name))).fetchall()
             db.close()
-            return post
-        else:
-            try:
-                db = connect_db()
-                cursor = db.cursor()
-                sqlite_select_query = """SELECT * from Regrade_Request"""
-                cursor.execute(sqlite_select_query)
-                records = cursor.fetchall()
-                cursor.close()
-            except sqlite3.Error as error:
-                print("Failed to read data from table", error)
-            finally:
-                if db:
-                    db.close()
-    a = records
-    return jsonify(a)
+
+            regrade_dict = {}
+
+            for regrade in regrades:
+                if regrade[0] not in regrade_dict:
+                    regrade_dict[regrade[0]] = []
+                regrade_dict[regrade[0]].append(regrade[1:])
+
+            for assignment in assignments:
+                if assignment[0] not in regrade_dict:
+                    regrade_dict[assignment[0]] = []
+
+
+            return jsonify(regrade_dict)
+
+    return ''
 
 @app.route('/instructor/class')
 def instructor_class():
@@ -445,8 +521,22 @@ def register():
                 castSQL(Password),
                 instructor))
         db.commit()
+
+        if instructor != 'NULL':
+            assignments = cursor.execute('''
+                SELECT Name
+                FROM Assignment
+                WHERE Instructor = {}
+            '''.format(instructor)).fetchall()
+
+            for assignment in assignments:
+                cursor.execute('''
+                    INSERT INTO Grade (Assignment, Student_ID, Grade)
+                    VALUES({}, {}, NULL)
+                '''.format(castSQL(assignment[0]), castSQL(UtorID)))
+            db.commit()
         cursor.close()
-        return 'User successfully added.'
+        return redirect('/')
     except:
         db.rollback()
         return 'An error occured. Make sure the UtorID is unique.'
@@ -471,7 +561,9 @@ def root():
 
 @app.route('/<file>')
 def home(file):
-    if (not session.get('UtorID')):
+    if not session.get('UtorID'):
+        if file == 'register.html':
+            return render_template(file)
         return redirect('/')
 
     return render_template(file)

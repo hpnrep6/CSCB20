@@ -10,7 +10,7 @@ fetch('/api/instructors').then( (res) => {
         instrList.innerHTML += `
             <option value="`+instr[0]+`">`+name+`</option>`;
     }
-    console.log(3)
+
 }).catch((e)=> {
     console.log(e)
 })
@@ -18,7 +18,9 @@ fetch('/api/instructors').then( (res) => {
 function setInstructor(e) {
     if (e.value == 'Instructor') {
         instrList.style.display = 'none';
+        document.getElementById('instructor-select').style.display = 'none';
     } else {
         instrList.style.display = 'block';
+        document.getElementById('instructor-select').style.display = 'block';
     }
 }

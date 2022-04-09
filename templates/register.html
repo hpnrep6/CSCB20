@@ -36,24 +36,41 @@
 
 
     <div class="login-cont">
-        <form method="post" action="/login">
-          <h3>
+        <form method="post" action="/register">
+            <h3>
               UtorID
-          </h3>
-          <input type="text" name='UtorID' required>
+            </h3>
+            <input type="text" name='UtorID' required>
+            <h3>
+              First Name
+            </h3>
+            <input type="text" name="First_Name" required>
+            <h3>
+              Middle Name
+            </h3>
+            <input type="text" name="Middle_Name">
+            <h3>
+              Last Name
+            </h3>
+            <input type="text" name="Last_Name">
+            <h3>
+              Status (Student or Instructor)
+            </h3>
+            <select name="Status" onchange="setInstructor(this)">
+                <option value="Student">Student</option>
+                <option value="Instructor">Instructor</option>
+            </select>
+            <h3 id="instructor-select">
+              Select your instructor
+            </h3>
+            <select name="Instructor" id="instructors">
+            </select>
             <h3>
               Password
             </h3>
-          <input type="password" name="Password" required>
-          <input type="submit" value="Login">
+            <input type="password" name="Password">
+            <input type="submit" value="Register">
         </form>
-        <div class="center-tool">
-          <a href="register.html">
-            <button id="switch-button">
-              Don't have an account? Register here!
-            </button>
-          </a>
-        </div>
     </div>
 
 

@@ -1,4 +1,6 @@
 let formatAssignment = (title, id) => {
+    id = id.replaceAll(' ', '_-_')
+
     return `
     <div class='grade-entry' id=`+id+`>
     <div class='grade-info'>
@@ -18,8 +20,8 @@ let formatAssignment = (title, id) => {
 
 let grades = document.getElementsByClassName('grades')[0];
 
-function appendAssignment(title, grade, details) {
-    grades.innerHTML += formatAssignment(title, grade, details);    
+function appendAssignment(title, id) {
+    grades.innerHTML += formatAssignment(title, id);    
 }
 
 let moreinfo = (e) => {
@@ -32,22 +34,44 @@ let moreinfo = (e) => {
     }
 }
 
-let appendRegrade = (title, details, id) => {
+let appendRegrade = (title, details, id, dummy = false) => {
+    id = id.replaceAll(' ', '_-_')
     let grades = document.getElementById(id + 'g');
-    grades.innerHTML += `
-    <div class='grade-grid regrade-details'>
-        <h2>
-            `+ title +`
-        </h2>
-        <p>
-            `+details+`
-        </p>
-    </div>`;
+
+    if (dummy) {
+        grades.innerHTML += `
+        No regrade requests (for now) :)`;
+    } else {
+        grades.innerHTML += `
+        <div class='grade-grid regrade-details'>
+            <h2>
+                `+ title +`
+            </h2>
+            <p>
+                `+details+`
+            </p>
+        </div>`;
+    }
 }
 
-appendAssignment('Xaco taco ate the paco', 'taco');
+fetch('/api/regrade').then((res) => {
+    return res.json();
+}).then((res) => {
+    for (key in res) {
+        let regrade_count = res[key].length
+        console.log(regrade_count)
+        appendAssignment(key + ' (' + regrade_count + ')', key);
 
-appendRegrade('taco taco ate paco', 'paco taco', 'taco')
-appendRegrade('taco taco ate paco', 'paco taco', 'taco')
-appendRegrade('taco taco ate paco', 'paco taco', 'taco')
-appendRegrade('taco taco ate paco', 'paco taco', 'taco')
+        for (i in res[key]) {
+            let student = res[key][i];
+
+            appendRegrade(student[1] + ' ' + student[2] + ' (' + student[0] + ')', student[3], key);
+        }
+
+        if (res[key].length == 0) {
+            appendRegrade('', '', key, true);
+        }
+    }
+
+
+})

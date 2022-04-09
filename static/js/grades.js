@@ -11,8 +11,7 @@ let formatGrade = (title, grade, details) => {
     <div class='grade-entry' id=`+id+`>
         <div class='grade-info'>
             <div class='grade-title grade-grid'>
-                <h2>` + title + `
-                </h2>
+                <h2>` + title + `</h2>
             </div>
             <div class='grade-value grade-grid'>
                 <h4 class='center-tool'>
@@ -32,11 +31,35 @@ let formatGrade = (title, grade, details) => {
             <p>
                 `+details+`
             </p>
-            <button class='regrade-button'>
-                Request Regrade
-            </button>
+            <h3 class='submitted-regrade'>
+                Regrade Submitted!
+            </h3>
+            <textarea class='regrade-info' value='details'></textarea>
+            <button class='regrade-button' onclick='regrade(this)'>Request Regrade</button>
         </div>
     </div>`;
+}
+
+function regrade(e) {
+    let text = e.parentElement.getElementsByClassName('regrade-info')[0];
+    if (e.innerHTML == 'Request Regrade') {
+        text.style.display = 'block';
+        e.innerHTML = 'Submit Regrade'
+    } else {
+        e.style.display = 'none';
+        let info = text.value;
+        text.style.display = 'none';
+
+        let assignment = e.parentElement.parentElement.getElementsByClassName('grade-title')[0].getElementsByTagName('h2')[0].innerHTML;
+        
+        let form = new FormData();
+        form.append('Assignment', assignment);
+        form.append('Content', info);
+
+        let req = new XMLHttpRequest();
+        req.open('POST', '/api/regrade');
+        req.send(form);
+    }
 }
 
 let grades = document.getElementsByClassName('grades')[0];
@@ -55,11 +78,11 @@ let moreinfo = (e) => {
     }
 }
 
-fetch('/api/grade').then((res) => {
+fetch('/api/grade/student').then((res) => {
     return res.json();
-}).then((json) => {
-    console.log(json)
-    for (grade in json) {
-        appendGrade(json[grade][0], json[grade][2], json[grade][1]);
+}).then((res) => {
+    console.log(res)
+    for (i in res) {
+        appendGrade(res[i][0], res[i][1], res[i][2]);
     }
 });

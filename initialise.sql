@@ -37,7 +37,9 @@ CREATE TABLE IF NOT EXISTS Feedback (
 
 CREATE TABLE IF NOT EXISTS Regrade_Request (
     Id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-    Grade_Id INTEGER,
+    Assignment VARCHAR(256),
+    Student_ID VARCHAR(32),
     Content VARCHAR(1024),
-    FOREIGN KEY (Grade_Id) REFERENCES Grade(Id)
+    FOREIGN KEY (Assignment) REFERENCES Assignment(Assignment),
+    FOREIGN KEY (Student_ID) REFERENCES User(UtorID)
 );

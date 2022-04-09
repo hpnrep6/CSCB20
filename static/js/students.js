@@ -1,166 +1,223 @@
+let cont = document.getElementById('class');
+
+let grid = [];
+grid[0] = [];
+grid[0][0] = 0;
+let aMap = new Map();
+let edited = [];
+
 class Student {
-    static assignmentCount = 0;
-
-    ref;
-    root;
+    key;
     name;
-    status;
-    avg;
-    assignments_elem;
-    assignments = [];
+    constructor(key, name) {
+        this.key = key;
+        this.name = name;
+    }
+}
 
-    addAssignment(name, grade) {
-        let a = new Assignment();
-        a.parent = this;
-        a.title  = name;
-        a.grade = grade;
+class vec2 {
+    x;
+    y;
+    constructor(x, y) {
+        this.x = x;
+        this.y = y;
+    }
+}
 
-        ++Student.assignmentCount;
-        let str = `
-        <div class="center-tool limit-width" id=s`+Student.assignmentCount+`>
-            <div class="assignment-grid">
-            <div class="assignment-container">
-                <h3>
-                `+name+`
-                </h3>
-                <div class='grade-display'>
-                <h3>`+grade+`</h3>
-                <textarea class="grade-edit"></textarea>
-                <div class='center-tool'>
-                    <button>Save</button>
-                    </div>
-                </div>
-            </div>
-            </div>
-        </div>
+function renderTable() {
+    let table = document.getElementById('student-grades');
+    let edit_table = document.getElementById('edit-grades')
+    let header = document.getElementById('grade-header');
+    let edit = document.getElementById('edit-header');
+
+    for (let i = 1; i < grid[0].length; ++i) {
+        let title = `
+            <th class='entry' id=g_0x`+i+`>` + grid[0][i] + `</th>
         `;
-
-        this.assignments_elem.innerHTML += str;
-
-        let element = document.getElementById('s' + Student.assignmentCount);
-        
-        a.root = element;
-        a.button = element.getElementsByClassName('grade-display')[0].getElementsByTagName('h3')[0];
-        a.h3 = element.getElementsByClassName('grade-display')[0].getElementsByTagName('h3')[0];
-        a.save = element.getElementsByTagName('button')[0];
-        a.edit = element.getElementsByTagName('textarea')[0];
-
-        a.h3.onclick = () => { a.editGrade() };
-        a.save.onclick = () => { a.saveGrade() };
-
-        this.assignments.push(a);
-        this.updateAverage();
+        header.innerHTML += title;
+        edit.innerHTML += title;
     }
 
-    updateAverage() {
-        let total = 0.0;
-        for (let i = 0; i < this.assignments.length; ++i) {
-            console.log(this.assignments[i])
-            total += this.assignments[i].grade;
+    for (let y = 1; y < grid.length; ++y) {
+        let id = 'g_' + y
+        table.innerHTML += `
+            <tr id=`+id+`>
+            </tr>        
+        `
+
+        edit_table.innerHTML += `
+        <tr id=e_`+id+`>
+        </tr>        
+    `
+
+        let elem = document.getElementById(id);
+        let edit_elem = document.getElementById('e_' + id);
+
+        for (let x = 0; x < grid[y].length; ++x) {
+            let id = 'g_' + y+'x'+x
+            let entry = grid[y][x];
+
+            if (x == 0) {
+                entry = grid[y][x].name;
+            }
+
+            if (entry == null) {
+                entry = 'NA'
+            }
+
+            elem.innerHTML += `
+                <td id=`+id+` class='entry'>`+entry+`</td>
+            `
+
+            if (entry == 'NA') {
+                entry = -1;
+            }
+
+
+            if (isNaN(entry)) {
+                edit_elem.innerHTML += `
+                    <td id=e_`+id+` class='entry'>`+entry+`</td>
+                `
+                continue;
+            }
+
+
+            edit_elem.innerHTML += `
+                <td class='entry'>
+                    <div class='center-tool'>
+                        <input onclick='editGrade(this)' id=e_`+id+` type='number' value=`+entry+`>
+                        </input>
+                    </div>
+                </td>
+            `
         }
-
-        total /= this.assignments.length;
-        total = total.toString();
-        total = total.substring(0, 4);
-
-        this.avg.innerHTML = total;
     }
 }
 
-class Assignment {
-    parent;
-    title;
-    grade;
-    root;
-    button;
-    edit;
-    h3;
-    save;
+function updateGrades(e) {
+    for (let y = 1; y < grid.length; ++y) {
+        for (let x = 1; x < grid[y].length; ++x) {
+            let edited_grade = document.getElementById('e_g_'+y+'x'+x).value;
+            let displayed_grade = document.getElementById('g_'+y+'x'+x);
 
-    editGrade() {
-        this.h3.style.display = 'none';
-        this.edit.style.display = 'block';
-        this.save.style.display = 'block';
+            if (edited_grade >= 0)
+                displayed_grade.innerHTML = edited_grade;
+            else 
+                displayed_grade.innerHTML = 'NA';
+        }
     }
 
-    saveGrade() {
-        this.h3.style.display = 'block';
-        this.edit.style.display = 'none';
-        this.save.style.display = 'none';
+    if (e.innerHTML == 'Edit Grades') {
+        e.innerHTML = 'Save Grades';
+        document.getElementById('edit-grades').style.display = 'table';
+        document.getElementById('student-grades').style.display = 'none';
+    } else {
+        e.innerHTML = 'Edit Grades';
+        document.getElementById('edit-grades').style.display = 'none';
+        document.getElementById('student-grades').style.display = 'table';
 
-        let nGrade = this.edit.innerHTML;
+        for (let y = 0; y < edited.length; ++y) {
+            for (let x = 0; x < edited[y].length; ++x) {
+                if (edited[y][x] == 1) {
+                    edited[y][x] = 0;
 
-        this.parent.updateAverage();
+                    let grade = document.getElementById('e_g_'+y+'x'+x).value;
+                    if (grade < 0) {
+                        grade = 'null';
+                    }
+
+                    let utorid = grid[y][0].key;
+                    let aName = grid[0][x];
+
+                    let form = new FormData();
+                    form.append('UtorID', utorid);
+                    form.append('Grade', grade);
+                    form.append('Assignment', aName);
+
+                    let req = new XMLHttpRequest();
+                    req.open('POST', '/api/grade');
+                    req.send(form);
+                }
+            }
+        }
     }
 }
 
-let idCount = 0;
-let idMap = new Map();
-let students = document.getElementById('class');
+function editGrade(e) {
+    let id = e.id;
 
-function createStudent(name, ref, status='Student') {
-    idCount += 1;
-    id = idCount;
-    let str = `
-    <div class="student-all" id=c`+id+`>
-    <div class="student">
-        <div class="name">
-        <h2>
-            `+name+`
-        </h2>
-        </div>
+    let y = parseInt(id.substring(id.indexOf('g_') + 2, id.indexOf('x')));
+    let x = parseInt(id.substring(id.indexOf('x') + 1));
 
-        <div class="status">
-        <h2>
-            `+status+`
-        </h2>
-        </div>
-        <div class="grades-avg">
-        <h2>
-            NA
-        </h2>
-        </div>
-        <div class="grades-dropdown">
-        <h2>
-            <img src="./static/images/Information_icon.svg">
-        </h2>
-        </div>
-    </div>
-        <div class="student-assignments">
-        </div>
-    </div>`;
-    students.innerHTML += str;
-    
-    let student = new Student();
-    console.log(students);
-    let element = document.getElementById(('c' + id));
-
-    student.root = element;
-    student.name = element.getElementsByClassName('name')[0].getElementsByTagName('h2')[0];
-    student.status = element.getElementsByClassName('status')[0].getElementsByTagName('h2')[0];
-    student.avg = element.getElementsByClassName('grades-avg')[0].getElementsByTagName('h2')[0];
-
-    student.assignments_elem = element.getElementsByClassName('student-assignments')[0];
-
-    idMap.set(id, student);
-
-    return student;
+    edited[y][x] = 1;
 }
-
 
 fetch('/api/grade').then((res) => {
     return res.json();
-}).then( (res) => {
-    for (i in res) {
-        let a = res[i];
-        let utorid = a[0];
-
-        if (idMap.has(utorid)) {
-            idMap.get(utorid).addAssignment(a[4], a[5])
-        } else {
-            let s = createStudent(a[1] + ' ' + a[3], a[0]);
-            idMap.set(utorid, s);
-            s.addAssignment(a[4], a[5])
-        }
+}).then((res) => {
+    let assignments = res['_assignments'];
+    let length = 0;
+    edited[0] = [];
+    
+    for (i in assignments) {
+        grid[0].push(assignments[i][0]);
+        // cont.innerHTML += `
+        // <div class="col" id=g_0-`+i+`>
+        //     <div class="entry assignment-name">
+        //         `+assignments[i]+`
+        //     </div>
+        // </div>
+        // `
+        aMap[assignments[i]] = parseInt(i) + 1;
+        edited[0].push(0);
+        ++length;
     }
+    let st_c = 1;
+
+    let students = document.getElementById('student-name')
+    for (let key in res) {
+        if (key == '_assignments') {
+            continue;
+        }
+
+        let student = res[key];
+        // students.innerHTML += `
+        //     <div class="entry" id=sname_`+aNameId+`>
+        //         `+key+`
+        //     </div>
+        // `
+ 
+        let st_obj = new Student(key, student[0][0][0] + ' ' + student[0][0][2])
+        grid[st_c] = []
+        grid[st_c][0] = st_obj;
+        edited[st_c] = [];
+        edited[st_c][0] = 0;
+
+
+        for (let i = 0; i < length; ++i) {
+            grid[st_c][i + 1] = 0;
+            edited[st_c][i + 1] = 0;
+        }
+
+        for (i in student) {
+            if (i == 'id') {
+                continue;
+            }
+
+            let index = aMap[student[i][0][3]];
+            grid[st_c][index] = student[i][0][4];
+            // let a = document.getElementById('aname_' + index);
+            // a.innerHTML += `
+            // <div class="entry" id=grade_`+sNameId+`+`+index+`>
+            //     `+student[i][4]+`
+            // </div>
+            // `
+        }
+
+        st_c++;
+    }
+    renderTable();
+    console.log(grid);
+    
 })
+
