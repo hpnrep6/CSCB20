@@ -33,7 +33,7 @@
 }
 
 .grade-grid {
-    border-radius: 10px;
+    border-radius: 4px;
     background-color: white;
     border-color: rgb(185, 185, 185);
     border-style: solid;
@@ -52,7 +52,7 @@
 
 .grade-details {
     margin-top: 1rem;
-    background-color: white;
+    background: linear-gradient(51deg, rgb(209, 255, 216) 0%, rgb(163, 252, 163) 100%);
     display: none;
     flex-direction: column;
 }
@@ -64,4 +64,5 @@
 
 .regrade-details {
     margin-top: 10px;
+    background: linear-gradient(145deg, rgb(226, 234, 247) 0%, rgb(241, 226, 247) 100%);
 }

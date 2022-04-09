@@ -15,13 +15,11 @@ DB_PATH = 'assignment3.db'
 SQL_INIT_PATH = 'initialise.sql'
 
 def connect_db():
-    global db
-    db = sqlite3.connect(DB_PATH, check_same_thread = False)
-    return db
+    return sqlite3.connect(DB_PATH, check_same_thread = False)
 
 
 def create_db():
-    global db
+    db = connect_db()
 
     file = open(SQL_INIT_PATH, 'r')
     query = file.read()
@@ -31,6 +29,8 @@ def create_db():
 
     for q in query:
         db.execute(q)
+    db.commit()
+    db.close()
 
 connect_db()
 create_db()
@@ -66,7 +66,7 @@ def api_user():
             return 'An error occured while hashing the password.'
 
         Password = pw_hash
-        global db
+
         db = connect_db()
         cursor = db.cursor()
         try:
@@ -190,7 +190,6 @@ def api_grade():
         Assignment = req.get('Assignment')
         Grade = req.get('Grade')
 
-        global db
         db = connect_db()
         cursor = db.cursor()
 
@@ -292,7 +291,6 @@ def api_assignment():
         Description = req.get('Description')
         Instructor = req.get('Instructor')
 
-        global db
         db = connect_db()
         cursor = db.cursor()
         # try:
@@ -360,7 +358,6 @@ def api_feedback():
         Content = req.get('Content')
         Instructor = req.get('Instructor')
 
-        global db
         db = connect_db()
         cursor = db.cursor()
         try:
@@ -398,9 +395,9 @@ def api_remark():
 
         Assignment = req.get('Assignment')
         Content = req.get('Content')#.replace('\'', '\'\'')
-        print(Content)
+
         
-        global db
+
         db = connect_db()
         cursor = db.cursor()
         try:
@@ -504,7 +501,7 @@ def register():
         return 'An error occured while hashing the password.'
 
     Password = hash
-    global db
+
     db = connect_db()
     cursor = db.cursor()
 
@@ -541,6 +538,7 @@ def register():
             '''.format(castSQL(assignment[0]), castSQL(UtorID)))
         db.commit()
     cursor.close()
+    db.close()
     return redirect('/')
     # except:
     #     db.rollback()
@@ -572,8 +570,3 @@ def home(file):
         return redirect('/')
 
     return render_template(file)
-
-@app.teardown_appcontext
-def close_db(exception):
-    global db
-    db.close()
