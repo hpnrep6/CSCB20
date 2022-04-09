@@ -50,11 +50,14 @@ function regrade(e) {
     let text = e.parentElement.getElementsByClassName('regrade-info')[0];
     if (e.innerHTML == 'Request Regrade') {
         text.style.display = 'block';
+        text.value = 'I would like to request a regrade on this assessment.'
         e.innerHTML = 'Submit Regrade'
     } else {
         e.style.display = 'none';
         let info = text.value;
         text.style.display = 'none';
+
+        e.parentElement.parentElement.getElementsByClassName('submitted-regrade')[0].style.display = 'block';
 
         let assignment = e.parentElement.parentElement.getElementsByClassName('grade-title')[0].getElementsByTagName('h2')[0].innerHTML;
         

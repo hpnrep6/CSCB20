@@ -27,23 +27,27 @@
     margin-top: 2rem;
 }
 
+@media (max-width: 800px) {
+    .grade-info {
+        display: flex !important;
+        flex-direction: column;
+    }
+
+    .grade-grid {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .grade-moreinfo img{
+        height: 2rem;
+    }
+}
+
 .grade-info {
     display: grid;
     grid-template-columns: calc(100% - 10rem) 5rem 5rem;
 }
 
-.grade-grid {
-    border-radius: 10px;
-    background-color: white;
-    border-color: rgb(185, 185, 185);
-    border-style: solid;
-    border-width: 2px;
-    margin-right: 1rem;
-    padding: 4px 10px 4px 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
 
 .grade-moreinfo:hover {
     background: linear-gradient(34deg, rgb(220, 255, 211) 0%, rgb(187, 255, 182) 100%);
@@ -60,8 +64,33 @@
 .regrade-button {
     height: 3rem;
     cursor: pointer;
+    margin-bottom: 5px;
 }
 
 .regrade-info {
     display: none;
+}
+
+.grade-entry p {
+    font-family: 'Raleway';
+    font-size: 1rem;
+}
+
+.grade-title h2 {
+    font-family: 'Raleway';
+    font-size: 2.2rem;
+    margin: 0;
+}
+
+.grade-details h2 {
+    font-family: 'Raleway';
+    font-size: 1.6rem;
+    margin-bottom: 0;
+}
+
+.submitted-regrade {
+    text-align: center;
+    font-family: 'Raleway';
+    font-size: 2rem;
+    margin: 10px 0 20px 0;
 }

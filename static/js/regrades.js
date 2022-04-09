@@ -65,7 +65,7 @@ fetch('/api/regrade').then((res) => {
         for (i in res[key]) {
             let student = res[key][i];
 
-            appendRegrade(student[1] + ' ' + student[2] + ' (' + student[0] + ')', student[3], key);
+            appendRegrade('Regrade request by ' + student[1] + ' ' + student[2] + ' (' + student[0] + ')', student[3], key);
         }
 
         if (res[key].length == 0) {
