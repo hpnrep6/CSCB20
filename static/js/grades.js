@@ -7,6 +7,12 @@ let generateId = () => {
 let formatGrade = (title, grade, details) => {
     let id = generateId();
 
+    if (grade == null) {
+        grade = 'None'
+    } else {
+        grade += '%'
+    }
+    
     return `
     <div class='grade-entry' id=`+id+`>
         <div class='grade-info'>
@@ -15,7 +21,7 @@ let formatGrade = (title, grade, details) => {
             </div>
             <div class='grade-value grade-grid'>
                 <h4 class='center-tool'>
-                `+grade+`%
+                `+grade+`
                 </h4>
             </div>
             <div class='grade-moreinfo grade-grid' onclick='moreinfo(this)' id=`+id+`b>

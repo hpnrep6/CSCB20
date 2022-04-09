@@ -1,4 +1,3 @@
-
 let dropdowns = document.getElementsByClassName('dropdown-content');
 
 let dropdownShow = (e) => {
@@ -53,6 +52,31 @@ document.onmouseup = (e) => {
     clearDropdowns();
 }
 
-{
+let personal = document.getElementById('personal-drop');
+
+if (personal != undefined) {
+    fetch('/api/status').then((res) => {
+        return res.json();
+    }).then((res) => {
+        if (res == 'Student') {
+            personal.innerHTML += `
+            <a class="header-element dropdown-element" href="grades.html">Grades</a>
+            <a class="header-element dropdown-element" href="account.html">Account</a>
+            <a class="header-element dropdown-element" href="logout">Log Out</a>
+            `;
+        } else {
+            personal.innerHTML += `
+            <a class="header-element dropdown-element" href="regrades.html">Regrades</a>
+            <a class="header-element dropdown-element" href="feedback.html">Feedback</a>
+            <a class="header-element dropdown-element" href="students.html">Students</a>
+            <a class="header-element dropdown-element" href="instructor.html">Instructor Centre</a>
+            <a class="header-element dropdown-element" href="account.html">Account</a>
+            <a class="header-element dropdown-element" href="logout">Log Out</a>
+            `;
+        }
+
+        setHeaderDesktop(document.getElementById('header'));
+    })
+} else {
     setHeaderMobile(document.getElementById('header'));
 }

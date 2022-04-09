@@ -1,6 +1,11 @@
+body {
+    background: linear-gradient(-152deg, rgb(219, 237, 255) 0%, rgb(208, 191, 255) 100%);
+}
+
 .login-cont {
     display: flex;
     flex-direction: column;
+    min-height: 85vh;
 }
 
 form {
@@ -13,6 +18,7 @@ form {
 input {
     height: 2rem;
     margin: 5px 0 5px 0;
+    padding: 0 10px 0 10px;
 }
 
 select {
@@ -30,7 +36,8 @@ form select {
 
 form h3 {
     font-size: 1.3rem;
-    margin: 0;
+    margin: 10px 0 0 0;
+    font-family: 'Roboto';
 }
 
 .login-cont a {
@@ -40,7 +47,36 @@ form h3 {
     flex-direction: column;
 }
 
+.submit {
+    font-family: 'Raleway';
+    font-size: 1rem;
+    height: fit-content;
+    padding: 10px;
+    border-color: rgb(218, 171, 251);
+    background: linear-gradient(rgb(249, 235, 255) 0%, rgb(235, 216, 255) 100%);
+}
+
+.submit:hover {
+    background: linear-gradient(rgb(233, 220, 237) 0%, rgb(225, 208, 245) 100%);
+}
+
+a {
+    text-decoration: none;
+}
+
 #switch-button {
     width: calc(min(300px, 100% - 40px));
-    height: 2rem;
+    height: fit-content;
+    padding: 1rem;
+    font-family: 'Raleway';
+    height: fit-content;
+    padding: 15px;
+    border-color: white;
+    font-size: 1rem;
+    background: linear-gradient(rgb(255, 235, 255) 0%, rgb(255, 216, 251) 100%);
+    margin-bottom: 20px;
+}
+
+#switch-button:hover {
+    background: linear-gradient(rgb(236, 220, 236) 0%, rgb(238, 204, 236) 100%);
 }

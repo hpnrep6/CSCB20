@@ -1,29 +1,63 @@
 #content {
-    display: grid;
-    grid-template-columns: 40% 60%;
-    height: 100vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
     padding: 3rem;
 }
 
+@media (max-width: 800px) {
+    #content {
+        flex-direction: column;
+    }
+
+    .center {
+        display: flex;
+        justify-content: center;
+    }
+
+    #all-info {
+        padding: 0 !important;
+        margin-left: 0 !important;
+        width: 100% !important;
+    }
+
+    #all-info * {
+        width: 100%;
+        text-align: center;
+    }
+}
 
 #all-info {
     display: flex;
     flex-direction: column;
     padding: 1.2rem;
     margin-left: 5rem;
+    width: fit-content;
 }
 
+.info h2 {
+    font-family: 'Roboto';
+    font-size: 2rem;
+    margin: 20px 0 20px 0;
+}
 
+.info p {
+    font-family: 'Roboto';
+    font-size: 1.5rem;
+    margin: 0;
+}
 
 body {
     background: linear-gradient(22deg, rgb(202, 255, 177) 0%, rgb(140, 151, 255) 100%);
 }
 
 #profile-pic {
-    height: calc((100vw - 6rem)*(.4));;
-    width: calc((100vw - 6rem)*(.4));
+    height: calc(max((100vw - 6rem)*(.4), 400px));
+    width:  calc(max((100vw - 6rem)*(.4), 400px));
+    font-size: calc(min(10vw, 100px));
+    font-family: 'Raleway';
     border-radius: 50%;
-    background-color: coral;
+    background: radial-gradient(rgb(255, 255, 232) 0%, rgb(210, 255, 95) 100%);
 }
 
 #profile-name {
