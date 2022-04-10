@@ -1,9 +1,7 @@
-from ctypes import cast
 from flask import Flask, redirect, render_template, request, jsonify, send_file, session
 import sqlite3
 from flask_bcrypt import Bcrypt
 from flask_session import Session
-from itsdangerous import json
 
 app = Flask(__name__)
 bcrypt = Bcrypt(app)
