@@ -1,17 +1,13 @@
 let feedback = document.getElementById('feedback');
 
-let appendFeedback = (title, date, details) => {
+let appendFeedback = (details) => {
     feedback.innerHTML += `
     <div class="feedback-item">
-        <h2>
-        `+title+`
-        </h2>
-        <h4>
-        `+date+`
-        </h4>
+        <topcurve></topcurve>
         <p>
         `+details+`
         </p>
+        <bottomcurve></bottomcurve>
     </div>`;
 }
 
@@ -21,6 +17,6 @@ fetch('/api/feedback').then((res) => {
     for (i in res) {
         let response = res[i];
 
-        appendFeedback('', '', response[0]);
+        appendFeedback(response[0]);
     }
 })

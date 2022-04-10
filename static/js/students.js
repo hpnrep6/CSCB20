@@ -65,9 +65,15 @@ function renderTable() {
                 entry = 'NA'
             }
 
-            elem.innerHTML += `
-                <td id=`+id+` class='entry'>`+entry+`</td>
-            `
+            if (x != 0) {
+                elem.innerHTML += `
+                    <td id=`+id+` class='entry'>`+entry+`</td>
+                `
+            } else {
+                elem.innerHTML += `
+                    <td id=`+id+` class='entry names'>`+entry+`</td>
+                `
+            }
 
             if (entry == 'NA') {
                 entry = -1;
@@ -76,11 +82,10 @@ function renderTable() {
 
             if (isNaN(entry)) {
                 edit_elem.innerHTML += `
-                    <td id=e_`+id+` class='entry'>`+entry+`</td>
+                    <td id=e_`+id+` class='entry names'>`+entry+`</td>
                 `
                 continue;
             }
-
 
             edit_elem.innerHTML += `
                 <td class='entry'>

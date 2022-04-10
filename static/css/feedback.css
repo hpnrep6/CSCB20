@@ -1,10 +1,10 @@
 body {
-    background: linear-gradient(-100deg, rgb(224, 172, 255) 0%, rgb(172, 105, 255) 100%);
+    background: linear-gradient(-100deg, rgb(245, 227, 255) 0%, rgb(221, 193, 255) 100%);
 }
 
 .title {
     height: 35vw;
-    background: linear-gradient(56deg, rgb(228, 140, 255) 0%,#de21ff 100%);
+    background: linear-gradient(56deg, rgb(243, 205, 255) 0%,#f2abff 100%);
     border-bottom-width: 3px;
     border-bottom-style: solid;
     border-bottom-color: white;
@@ -14,9 +14,13 @@ body {
     margin-top: 5vw;
     margin-bottom: 0;
     font-size: 17vw;
+    font-family: 'Raleway';
+    color: rgb(143, 20, 209);
 }
 
 .title h3 {
+    color: #86169a;
+    font-family: 'Raleway';
     font-size: calc(max(1rem, 2.3vw));
 }
 
@@ -29,32 +33,33 @@ body {
 
 .feedback-item {
     width: 90%;
-    border-radius: 10px;
-    background: linear-gradient(180deg, rgb(255, 145, 229) 0%, rgb(253, 124, 255) 100%);
+    border-radius: 4px;
+    background: linear-gradient(180deg, rgb(255, 212, 245) 0%, rgb(254, 198, 255) 100%);
     display: flex;
     flex-direction: column;
+    margin-top: 20px;
+    border: solid white 3px;
 }
 
-.feedback-item h2 {
-    margin: 5px;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    color: white;
-
-    padding: 10px;
-    text-align: center;
-    background-color: rgb(153, 0, 255);
+topcurve {
+    height: 10px;
+    border-radius: 4px 4px 0 0;
+    background-color: rgb(243, 152, 255);
+    border-bottom: solid white 3px;
 }
 
-.feedback-item h4 {
-    text-align: center;
-    margin: 4px 0 0 0;
+bottomcurve {
+    height: 10px;
+    border-radius: 0 0 4px 4px;
+    background-color: rgb(243, 152, 255);
+    border-top: solid white 3px;
 }
 
 .feedback-item p {
-    margin-top: 8px;
     padding: 10px;
     text-align: center;
     word-break: break-all;
     word-wrap: normal;
+    font-family: sans-serif;
 }
+

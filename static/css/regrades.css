@@ -6,12 +6,21 @@
     border-bottom-style: solid;
     border-bottom-color: white;
     border-bottom-width: 3px;
-    background: linear-gradient(65deg, rgb(182, 255, 113) 0%, rgb(113, 255, 201) 100%);
+    background: linear-gradient(65deg, rgb(182, 255, 113) 0%, rgb(113, 229, 255) 100%);
 }
 
 .title h1 {
-    font-size: calc(min(13vw, 10rem));
+    font-size: calc(min(17vw, 10rem));
     margin-bottom: 1rem;
+    font-family: 'Raleway';
+    color:rgb(16, 121, 18);
+}
+
+.title h3 {
+    text-align: center;
+    font-family: 'Raleway';
+    color:rgb(47, 112, 48);
+    font-size: calc(min(3.8vw, 1.3rem));
 }
 
 .grades {
@@ -53,12 +62,12 @@
 }
 
 .grade-moreinfo:hover {
-    background: linear-gradient(34deg, rgb(220, 255, 211) 0%, rgb(187, 255, 182) 100%);
+    background: linear-gradient(34deg, rgb(211, 255, 251) 0%, rgb(187, 255, 182) 100%);
     cursor: pointer;
 }
 
 .grade-moreinfo:active {
-    background: linear-gradient(34deg, rgb(183, 255, 165) 0%, rgb(128, 248, 119) 100%) !important;
+    background: linear-gradient(34deg, rgb(165, 255, 238) 0%, rgb(128, 248, 119) 100%) !important;
 }
 
 .grade-details {
@@ -101,7 +110,7 @@
 textarea {
     margin: 20px 0 20px 0;
     height: 200px;
-    font-family: sans-serif;
+    font-family: 'Raleway';
     padding: 10px;
     font-size: 1rem;
     border: white;

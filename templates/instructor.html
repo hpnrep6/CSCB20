@@ -68,23 +68,50 @@
         </div>
     </div>
     
-    <div class='controls'>
+    <div class='add-cont'>
         <div id='add-assignment'>
             <h2>
                 Create new assignment
             </h2>
             <form method='post' action='/api/assignment'>
                 <h3>
-                    Name
+                    Assignment Name
                 </h3>
                 <input type='text' name="Name">
                 <h3>
-                    Name
+                    Details
                 </h3>
                 <input type='text' name="Description">
+                <h3>
+                    Instructor
+                </h3>
                 <input type='text' name="Instructor" readonly="readonly" id="instr">
-                <input type="submit" value="Create">
+                <input type="submit" value="Create" id="submit">
             </form>
+        </div>
+
+        <div class="graph">
+            <div class="content">
+              <div class="percent">
+                <h4>100%</h4>
+                <h4>90%</h4>
+                <h4>80%</h4>
+                <h4>70%</h4>
+                <h4>60%</h4>
+                <h4>50%</h4>
+                <h4>40%</h4>
+                <h4>30%</h4>
+                <h4>20%</h4>
+                <h4>10%</h4>
+                <h4>0%</h4>
+              </div>
+              <div class="assign-percent">
+                
+              </div>
+            </div>
+            <div class="label">
+              <div class="percent"></div>
+            </div>
         </div>
     </div>
 

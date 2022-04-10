@@ -2,6 +2,7 @@ from flask import Flask, redirect, render_template, request, jsonify, send_file,
 import sqlite3
 from flask_bcrypt import Bcrypt
 from flask_session import Session
+from itsdangerous import json
 
 app = Flask(__name__)
 bcrypt = Bcrypt(app)
@@ -257,6 +258,24 @@ def api_grade():
 
     return 'Invalid'
 
+@app.route('/api/grade/aggregate')
+def api_grade_aggregate():
+    UtorID = session.get('UtorID')
+
+    db = connect_db()
+    cursor = db.cursor()
+
+    result = cursor.execute('''
+    SELECT Assignment, AVG(Grade)
+    FROM Grade
+    GROUP BY Assignment
+    '''.format(UtorID)).fetchall()
+
+    cursor.close()
+    db.close()
+
+    return jsonify(result)
+
 @app.route('/api/grade/student', methods = ['GET'])
 def api_grade_student():
     name = session.get('UtorID')
@@ -293,34 +312,35 @@ def api_assignment():
 
         db = connect_db()
         cursor = db.cursor()
-        # try:
-        cursor.execute('''
-            INSERT INTO Assignment (Name, Description, Instructor)
-            VALUES({}, {}, {})
-        '''.format(castSQL(Name),
-                castSQL(Description),
-                castSQL(Instructor)))
-
-        cursor.execute('SELECT UtorID FROM User WHERE Status = \'Student\' AND Instructor = {}'.format(castSQL(Instructor)))
-        students = cursor.fetchall()
-        print(students)
-        for student in students:
-            utorid = student[0]
-            
+        try:
             cursor.execute('''
-            INSERT INTO Grade(Assignment, Student_Id)
-            VALUES ({}, {})
-            '''.format(castSQL(Name), castSQL(utorid)))
+                INSERT INTO Assignment (Name, Description, Instructor)
+                VALUES({}, {}, {})
+            '''.format(castSQL(Name),
+                    castSQL(Description),
+                    castSQL(Instructor)))
 
-        records = {}
-        
+            cursor.execute('SELECT UtorID FROM User WHERE Status = \'Student\' AND Instructor = {}'.format(castSQL(Instructor)))
+            students = cursor.fetchall()
+            print(students)
+            for student in students:
+                utorid = student[0]
+                
+                cursor.execute('''
+                INSERT INTO Grade(Assignment, Student_Id)
+                VALUES ({}, {})
+                '''.format(castSQL(Name), castSQL(utorid)))
 
-        db.commit()
-        cursor.close()
-        db.close()
-        # except:
-        #     db.rollback()
-        #     return 'An error occured.'
+            records = {}
+            
+
+            db.commit()
+            cursor.close()
+            db.close()
+            return redirect('/instructor.html')
+        except:
+            db.rollback()
+            return 'An error occured.'
     if request.method == 'GET':
          # ID
         req = request.form
@@ -331,7 +351,7 @@ def api_assignment():
             post = db.execute('SELECT * FROM Assignment WHERE Id = {}').format(castSQL(name)).fetchall()
 
             db.close()
-            return post
+            return jsonify(post)
         else:
             try:
                 db = connect_db()
@@ -340,13 +360,10 @@ def api_assignment():
                 cursor.execute(sqlite_select_query)
                 records = cursor.fetchall()
                 cursor.close()
+                db.close()
+                return jsonify(records)
             except sqlite3.Error as error:
-                print("Failed to read data from table", error)
-            finally:
-                if db:
-                    db.close()
-    a = records
-    return jsonify(a)
+                return ''
 
 @app.route('/api/feedback', methods = ['POST', 'GET'])
 def api_feedback():
