@@ -61,6 +61,7 @@ if (personal != undefined) {
         if (res == 'Student') {
             personal.innerHTML += `
             <a class="header-element dropdown-element" href="grades.html">Grades</a>
+            <a class="header-element dropdown-element" href="student-feedback.html">Feedback</a>
             <a class="header-element dropdown-element" href="account.html">Account</a>
             <a class="header-element dropdown-element" href="logout">Log Out</a>
             `;
@@ -74,8 +75,8 @@ if (personal != undefined) {
             <a class="header-element dropdown-element" href="logout">Log Out</a>
             `;
         }
-
-        setHeaderDesktop(document.getElementById('header'));
+        
+        setHeaderMobile(document.getElementById('header'));
     })
 } else {
     setHeaderMobile(document.getElementById('header'));

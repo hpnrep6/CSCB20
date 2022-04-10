@@ -1,3 +1,4 @@
+from ctypes import cast
 from flask import Flask, redirect, render_template, request, jsonify, send_file, session
 import sqlite3
 from flask_bcrypt import Bcrypt
@@ -91,11 +92,6 @@ def api_user():
             db = connect_db()
             cursor = db.cursor()
             req = request.form
-            # if req.get('Instructor_ID') != None:
-            #     sqlite_select_query = """SELECT * from User
-            #                              WHERE Instructor = {}
-            #     """.format(castSQL(req.get('Instructor_ID')))
-            # else:
             sqlite_select_query = """SELECT UtorID, First_Name, Middle_Name, Last_Name, Status, Instructor from User
                                     WHERE UtorID = {}
                                     """.format(castSQL(session.get('UtorID')))
@@ -143,7 +139,6 @@ def api_instructor():
 
     db = connect_db()
     cursor = db.cursor()
-
       
     sqlite_select_query = """SELECT u2.UtorID, u2.First_Name, u2.Middle_Name, u2.Last_Name 
                             FROM User as u1
@@ -159,7 +154,6 @@ def api_instructor():
 
 @app.route('/api/instructors', methods = ['GET'])
 def api_instructors():
-    req = request.form
     if request.method == 'GET':
         try:
             db = connect_db()
@@ -173,14 +167,14 @@ def api_instructors():
             records = cursor.fetchall()
             cursor.close()
         except sqlite3.Error as error:
-            print("Failed to read data from table", error)
+            return 'Error'
         finally:
             if db:
                 db.close()
     a = records
     return jsonify(a)
 
-@app.route('/api/grade', methods = ['POST', 'GET', 'PATCH'])
+@app.route('/api/grade', methods = ['POST', 'GET'])
 def api_grade():
     if request.method == 'POST':
         # UtorID
@@ -199,7 +193,7 @@ def api_grade():
             FROM Grade
             WHERE Assignment = {} AND Student_ID = {}
         '''.format(castSQL(Assignment), castSQL(UtorID))).fetchone()
-        
+
         if result == None:
             try:
                 cursor.execute('''
@@ -221,8 +215,10 @@ def api_grade():
                 '''.format(Grade, castSQL(Assignment), castSQL(UtorID)))
                 db.commit()
                 cursor.close()
+
             except:
                 db.rollback()
+                
                 return 'An error occured.'
 
     if request.method == 'GET':
@@ -240,8 +236,9 @@ def api_grade():
             assignments = db.execute('''
             SELECT Name
             FROM Assignment
+            WHERE Instructor = {}
             GROUP BY Name
-            ''').fetchall()
+            '''.format(castSQL(name))).fetchall()
             db.close()
 
             names = {}
@@ -254,9 +251,9 @@ def api_grade():
                 names[entry[0]].append([entry[1:]])
             return jsonify(names)
         else:
-            return 'Invalid'
+            return 'Error'
 
-    return 'Invalid'
+    return 'Error'
 
 @app.route('/api/grade/aggregate')
 def api_grade_aggregate():
@@ -295,7 +292,7 @@ def api_grade_student():
 
         return jsonify(post)
     else:
-        return 'Invalid'
+        return 'Error'
 
 
 @app.route('/api/assignment', methods = ['POST', 'GET'])
@@ -322,7 +319,7 @@ def api_assignment():
 
             cursor.execute('SELECT UtorID FROM User WHERE Status = \'Student\' AND Instructor = {}'.format(castSQL(Instructor)))
             students = cursor.fetchall()
-            print(students)
+
             for student in students:
                 utorid = student[0]
                 
@@ -348,7 +345,7 @@ def api_assignment():
 
         if name != None:
             db = connect_db()
-            post = db.execute('SELECT * FROM Assignment WHERE Id = {}').format(castSQL(name)).fetchall()
+            post = db.execute('SELECT * FROM Assignment WHERE Id = {} ORDER BY Name DESC').format(castSQL(name)).fetchall()
 
             db.close()
             return jsonify(post)
@@ -363,7 +360,7 @@ def api_assignment():
                 db.close()
                 return jsonify(records)
             except sqlite3.Error as error:
-                return ''
+                return 'Error'
 
 @app.route('/api/feedback', methods = ['POST', 'GET'])
 def api_feedback():
@@ -411,9 +408,7 @@ def api_remark():
         utorid = session.get('UtorID')
 
         Assignment = req.get('Assignment')
-        Content = req.get('Content')#.replace('\'', '\'\'')
-
-        
+        Content = req.get('Content')
 
         db = connect_db()
         cursor = db.cursor()
@@ -464,43 +459,45 @@ def api_remark():
 
             return jsonify(regrade_dict)
 
-    return ''
+    return 'Error'
 
 @app.route('/login', methods = ['POST'])
 def login():
     req = request.form
     utorid = None
-    try:
-        db = connect_db()
-        cursor = db.cursor()
+    # try:
+    db = connect_db()
+    cursor = db.cursor()
 
-        sqlite_select_query = """SELECT UtorID, Password FROM User
-                                    WHERE UtorID = {}
-        """.format(castSQL(req.get('UtorID')))
+    sqlite_select_query = """SELECT UtorID, Password FROM User
+                                WHERE UtorID = {}
+    """.format(castSQL(req.get('UtorID')))
 
-        cursor.execute(sqlite_select_query)
-        user = cursor.fetchone()
-        cursor.close()
+    cursor.execute(sqlite_select_query)
+    user = cursor.fetchone()
 
-        password = user[1]
+    if user == None:
+        db.close()
+        return 'Incorrect UtorID or Password'
 
-        if not bcrypt.check_password_hash(password, req.get('Password')):
-            if db:
-                db.close()
-        else:
-            utorid = req.get('UtorID')
-        
+    cursor.close()
 
-    except sqlite3.Error as error:
-        print(error)
-    finally:
+    password = user[1]
+
+    if not bcrypt.check_password_hash(password, req.get('Password')):
         if db:
             db.close()
+        return 'Incorrect UtorID or Password'
+    else:
+        utorid = req.get('UtorID')
+        
+    if db:
+        db.close()
     
     if utorid != None:
         session['UtorID'] = utorid
     
-    return redirect('/')
+    return 'Success'
 
 
 @app.route('/register', methods = ['POST'])
@@ -528,38 +525,39 @@ def register():
     else:
         instructor = castSQL(instructor)
     
-    # try:
-    cursor.execute('''
-        INSERT INTO User (UtorID, First_Name, Middle_Name, Last_Name, Status, Password, Instructor)
-        VALUES({}, {}, {}, {}, {}, {}, {})
-    '''.format(castSQL(UtorID),
-            castSQL(First_Name),
-            castSQL(Middle_Name),
-            castSQL(Last_Name),
-            castSQL(Status),
-            castSQL(Password),
-            instructor))
-    db.commit()
-
-    if instructor != 'NULL':
-        assignments = cursor.execute('''
-            SELECT Name
-            FROM Assignment
-            WHERE Instructor = {}
-        '''.format(instructor)).fetchall()
-
-        for assignment in assignments:
-            cursor.execute('''
-                INSERT INTO Grade (Assignment, Student_ID, Grade)
-                VALUES({}, {}, NULL)
-            '''.format(castSQL(assignment[0]), castSQL(UtorID)))
+    try:
+        cursor.execute('''
+            INSERT INTO User (UtorID, First_Name, Middle_Name, Last_Name, Status, Password, Instructor)
+            VALUES({}, {}, {}, {}, {}, {}, {})
+        '''.format(castSQL(UtorID),
+                castSQL(First_Name),
+                castSQL(Middle_Name),
+                castSQL(Last_Name),
+                castSQL(Status),
+                castSQL(Password),
+                instructor))
         db.commit()
-    cursor.close()
-    db.close()
-    return redirect('/')
-    # except:
-    #     db.rollback()
-    #     return 'An error occured. Make sure the UtorID is unique.'
+
+        if instructor != 'NULL':
+            assignments = cursor.execute('''
+                SELECT Name
+                FROM Assignment
+                WHERE Instructor = {}
+            '''.format(instructor)).fetchall()
+
+            for assignment in assignments:
+                cursor.execute('''
+                    INSERT INTO Grade (Assignment, Student_ID, Grade)
+                    VALUES({}, {}, NULL)
+                '''.format(castSQL(assignment[0]), castSQL(UtorID)))
+            db.commit()
+        cursor.close()
+        db.close()
+        return redirect('/')
+    except:
+        db.rollback()
+        return render_template('register.html', message='Your username may not be unique or another error occured. Please try again.')
+
 
 @app.route('/logout')
 def logout():

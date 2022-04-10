@@ -51,13 +51,17 @@ form h3 {
     font-family: 'Raleway';
     font-size: 1rem;
     height: fit-content;
-    padding: 10px;
+    padding: 10px 60px 10px 60px;
+    width: fit-content;
+    margin-top: 3px;
+    margin-bottom: 30px;
     border-color: rgb(218, 171, 251);
     background: linear-gradient(rgb(249, 235, 255) 0%, rgb(235, 216, 255) 100%);
 }
 
 .submit:hover {
     background: linear-gradient(rgb(233, 220, 237) 0%, rgb(225, 208, 245) 100%);
+    cursor: pointer;
 }
 
 a {
@@ -79,4 +83,20 @@ a {
 
 #switch-button:hover {
     background: linear-gradient(rgb(236, 220, 236) 0%, rgb(238, 204, 236) 100%);
+}
+
+#notify {
+    font-family: 'Raleway';
+    font-size: 1.1rem;
+    color: rgb(255, 110, 110);
+    margin-top: 0;
+    display: none;
+}
+
+#failed {
+    font-size: 1.3rem;
+    font-family: 'Roboto';
+    text-align: center;
+    color: rgb(166, 0, 0);
+    margin-top: 20px;
 }

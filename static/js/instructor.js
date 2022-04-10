@@ -5,5 +5,5 @@ fetch('/api/utorid').then( (res) => {
 }).then((res) => {
     instr.value = res.UtorID;
 }).catch((e)=> {
-    console.log(e)
+
 })

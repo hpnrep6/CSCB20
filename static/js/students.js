@@ -29,10 +29,9 @@ function renderTable() {
     let edit_table = document.getElementById('edit-grades')
     let header = document.getElementById('grade-header');
     let edit = document.getElementById('edit-header');
-
     for (let i = 1; i < grid[0].length; ++i) {
         let title = `
-            <th class='entry' id=g_0x`+i+`>` + grid[0][i] + `</th>
+            <div class='entry col' id=g_0x`+i+`>` + grid[0][i] + `</div>
         `;
         header.innerHTML += title;
         edit.innerHTML += title;
@@ -41,13 +40,13 @@ function renderTable() {
     for (let y = 1; y < grid.length; ++y) {
         let id = 'g_' + y
         table.innerHTML += `
-            <tr id=`+id+`>
-            </tr>        
+            <div class='row' id=`+id+`>
+            </div>        
         `
 
         edit_table.innerHTML += `
-        <tr id=e_`+id+`>
-        </tr>        
+        <div class='row' id=e_`+id+`>
+        </div>        
     `
 
         let elem = document.getElementById(id);
@@ -67,11 +66,11 @@ function renderTable() {
 
             if (x != 0) {
                 elem.innerHTML += `
-                    <td id=`+id+` class='entry'>`+entry+`</td>
+                    <div id=`+id+` class='entry col'>`+entry+`</div>
                 `
             } else {
                 elem.innerHTML += `
-                    <td id=`+id+` class='entry names'>`+entry+`</td>
+                    <div id=`+id+` class='entry names col'>`+entry+`</div>
                 `
             }
 
@@ -82,18 +81,18 @@ function renderTable() {
 
             if (isNaN(entry)) {
                 edit_elem.innerHTML += `
-                    <td id=e_`+id+` class='entry names'>`+entry+`</td>
+                    <div id=e_`+id+` class='entry names col'>`+entry+`</div>
                 `
                 continue;
             }
 
             edit_elem.innerHTML += `
-                <td class='entry'>
+                <div class='entry col'>
                     <div class='center-tool'>
                         <input onclick='editGrade(this)' id=e_`+id+` type='number' value=`+entry+`>
                         </input>
                     </div>
-                </td>
+                </div>
             `
         }
     }
@@ -123,7 +122,8 @@ function updateGrades(e) {
 
         for (let y = 0; y < edited.length; ++y) {
             for (let x = 0; x < edited[y].length; ++x) {
-                if (edited[y][x] == 1) {
+                // if (edited[y][x] == 1) {
+                if (x > 0 && y > 0) {
                     edited[y][x] = 0;
 
                     let grade = document.getElementById('e_g_'+y+'x'+x).value;
@@ -222,7 +222,5 @@ fetch('/api/grade').then((res) => {
         st_c++;
     }
     renderTable();
-    console.log(grid);
-    
 })
 

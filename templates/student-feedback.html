@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="./static/images/db.svg">
+    <link rel="stylesheet" href="./static/css/style.css">
+    <link rel="stylesheet" href="./static/css/resources.css">
+    <title>Resources</title>
+  </head>
+  <body>
+    {% include 'header.html' %}
+
+    <div class="res" id="feedback">
+        <div class="res-info">
+            <div class="center-text">
+                <div class="center-tool">
+                    <h4>
+                        Your feedback is appreciated!
+                    </h4>
+                </div>
+                <div class="center-tool">
+                    <br>
+                </div>
+                <div class="center-tool">
+                    <div>
+    
+                        <div class="center-tool">
+                            <h6>
+                                What did you like about your instructor's teaching?
+                            </h6>
+                        </div>
+                        <br>
+                        <div class="center-tool">
+                            <textarea rows="5" cols="80" id="feedback-content0"></textarea>
+                        </div>
+                        <br>
+
+                        <div class="center-tool">
+                            <h6>
+                                How could your instructor improve their teaching?
+                            </h6>
+                        </div>
+                        <br>
+                        <div class="center-tool">
+                            <textarea rows="5" cols="80" id="feedback-content1"></textarea>
+                        </div>
+                        <br>
+
+                        <div class="center-tool">
+                            <h6>
+                                What did you like about the labs?
+                            </h6>
+                        </div>
+                        <br>
+                        <div class="center-tool">
+                            <textarea rows="5" cols="80" id="feedback-content2"></textarea>
+                        </div>
+                        <br>
+
+                        <div class="center-tool">
+                            <h6>
+                                What do you recommend the lab instructors do to improve?
+                            </h6>
+                        </div>
+                        <br>
+                        <div class="center-tool">
+                            <textarea rows="5" cols="80" id="feedback-content3"></textarea>
+                        </div>
+                        <br>
+
+
+                        <div class="center-tool">
+                            <h6 id="feedback-instructor">
+                                Your instructor: 
+                            </h6>
+                        </div>
+                        <div class="center-tool">
+                            <button onclick="submitFeedback(this)">
+                                Submit
+                            </button>
+                        </div>
+                        <div id="spacer">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+      {% include 'footer.html' %}
+      <script src='./static/js/dropdown.js'></script>
+      <script src='./static/js/resources.js'></script>
+  </body>
+</html>

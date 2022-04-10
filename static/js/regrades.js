@@ -1,6 +1,7 @@
 let formatAssignment = (title, id) => {
-    id = id.replaceAll(' ', '_-_')
-
+    id = id.replaceAll(' ', '_-_');
+    id = id.replaceAll('g', '_-_');
+    id = id.replaceAll('b', '_-_');
     return `
     <div class='grade-entry' id=`+id+`>
     <div class='grade-info'>
@@ -26,7 +27,6 @@ function appendAssignment(title, id) {
 
 let moreinfo = (e) => {
     let details = (document.getElementById(e.id.substring(0, e.id.indexOf('b')))).getElementsByClassName('grade-details')[0];
-
     if (details.style.display == 'flex') {
         details.style.display = 'none';
     } else {
@@ -35,7 +35,9 @@ let moreinfo = (e) => {
 }
 
 let appendRegrade = (title, details, id, dummy = false) => {
-    id = id.replaceAll(' ', '_-_')
+    id = id.replaceAll(' ', '_-_');
+    id = id.replaceAll('g', '_-_');
+    id = id.replaceAll('b', '_-_');
     let grades = document.getElementById(id + 'g');
 
     if (dummy) {
@@ -59,7 +61,6 @@ fetch('/api/regrade').then((res) => {
 }).then((res) => {
     for (key in res) {
         let regrade_count = res[key].length
-        console.log(regrade_count)
         appendAssignment(key + ' (' + regrade_count + ')', key);
 
         for (i in res[key]) {
@@ -72,6 +73,4 @@ fetch('/api/regrade').then((res) => {
             appendRegrade('', '', key, true);
         }
     }
-
-
-})
+});

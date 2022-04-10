@@ -6,7 +6,7 @@
     <link rel="icon" type="image/x-icon" href="./static/images/db.svg">
     <link rel="stylesheet" href="./static/css/style.css">
     <link rel="stylesheet" href="./static/css/login.css">
-    <title>CSCB20</title>
+    <title>Register</title>
   </head>
   <body>
     <div class="header-container">
@@ -34,6 +34,11 @@
     <!-- https://commons.wikimedia.org/wiki/File:Hamburger_icon_white.svg -->
 
 
+    <div class="center-tool">
+      <h2 id="failed">
+        {{ message }}
+      </h2>
+    </div>
 
     <div class="login-cont">
         <form method="post" action="/register">
@@ -82,29 +87,7 @@
     </div>
 
 
-    <div class="footer">
-      <div class="centre-tool">
-        <div class="footer-col">
-          <p>
-            Developed by Tina Zamiri, Young Chen, and Anabelle Hsiao.
-            <br> <br>
-          </p>
-        </div>
-        <div class="footer-col" id="uni-col">
-          <p id="uni-p">
-            This course is brought to you by the University of Toronto Faculty of Computer Science.
-            <br>
-            <a href="https://www.utsc.utoronto.ca/cms/faculty-of-computer-science">
-              <br>Click here to visit our faculty's website.
-            </a>
-          </p>
-        </div>
-        <div class="footer-col center-tool">
-          <img src="./static/images/ut.svg">
-        </div>
-      </div>
-    </div>
-    
+    {% include 'footer.html' %}
     <script src='./static/js/dropdown.js'></script>
     <script src='./static/js/login.js'></script>
   </body>

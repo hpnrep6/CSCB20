@@ -24,18 +24,14 @@ body {
 }
 
 .class { 
-    width: 80%;
+    width: fit-content;
     margin: 20px 10% 20px 10%;
     overflow-x: scroll;
-    border: 2px rgb(255, 166, 0) solid;
-    box-shadow: 0 0 5px rgb(255, 166, 0);
     font-family: 'Raleway';
 }
 
 .entry {
-    height: 40px;
     background: linear-gradient(rgb(255, 244, 211) 0%,rgb(255, 205, 156) 100%);
-    padding: 5px;
     font-size: 1rem;
     width: 100px;
     text-align: center;
@@ -43,11 +39,6 @@ body {
 
 .names {
     text-align: left !important;
-}
-
-table {
-    width: 100%;
-    table-layout: fixed;
 }
 
 input {
@@ -91,3 +82,33 @@ input::-webkit-inner-spin-button {
     margin: 0;
 }
 
+.grid {
+    display: flex;
+    border-collapse: separate;
+    text-indent: initial;
+    border-spacing: 2px;
+    flex-direction: column;
+    flex-grow: 1;
+    width: 100%;
+}
+
+.row {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+}
+
+.col-head {
+    padding: 10px 10px 10px 10px;
+    width: 110px;
+    flex-shrink: 0;
+    border: white 2px solid;
+}
+
+.col {
+    padding: 10px 10px 10px 10px;
+    min-height: 40px;
+    width: 110px;
+    flex-shrink: 0;
+    border: white 2px solid;
+}

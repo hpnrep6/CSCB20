@@ -90,7 +90,6 @@ let moreinfo = (e) => {
 fetch('/api/grade/student').then((res) => {
     return res.json();
 }).then((res) => {
-    console.log(res)
     for (i in res) {
         appendGrade(res[i][0], res[i][1], res[i][2]);
     }

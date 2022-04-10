@@ -12,7 +12,7 @@ fetch('/api/instructors').then( (res) => {
     }
 
 }).catch((e)=> {
-    console.log(e)
+
 })
 
 function setInstructor(e) {
@@ -23,4 +23,26 @@ function setInstructor(e) {
         instrList.style.display = 'block';
         document.getElementById('instructor-select').style.display = 'block';
     }
+}
+
+function submit(e) {
+    let form = document.getElementById('login-form');
+    let formdata = new FormData(form);
+
+    let req = new XMLHttpRequest();
+
+    req.onreadystatechange = () => {
+        if (req.readyState == 4) {
+            if (req.response != 'Success') {
+                let notify = document.getElementById('notify');
+                notify.style.display = 'block';
+                notify.innerHTML = req.response;
+            } else {
+                location.reload();
+            }
+        }
+    }
+
+    req.open('POST', '/login');
+    req.send(formdata);
 }

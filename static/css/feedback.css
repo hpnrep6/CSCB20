@@ -60,6 +60,7 @@ bottomcurve {
     text-align: center;
     word-break: break-all;
     word-wrap: normal;
-    font-family: sans-serif;
+    font-family: 'Raleway';
+    white-space: pre-wrap;
 }
 
